@@ -1,0 +1,15 @@
+<h2>Products</h2>
+
+<div class="card-deck">
+  <div *ngFor="let product of products" class="col-sm-3">
+    <div class="card wbdv-card-size">
+      <div class="card-body">
+        <img class="wbdv-img-size"
+             src={{product.image}}
+             alt="Image">
+        <h5 class="card-title">{{product.name}}</h5>
+        <h6>{{product.brand.name}}</h6>
+      </div>
+    </div>
+  </div>
+</div>
