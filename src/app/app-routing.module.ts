@@ -8,7 +8,8 @@ const routes: Routes = [
     path: '',
     children: [
       { path: '', component: SignInComponent },
-      { path: 'home', component: HomeComponent}
+      { path: 'home', component: HomeComponent},
+      { path: '**', component: HomeComponent} // last
     ]
   }
 ];
