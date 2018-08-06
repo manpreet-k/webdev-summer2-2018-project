@@ -11,6 +11,8 @@ const routes: Routes = [
       { path: 'signin', component: SignInComponent },
       { path: 'cart', component: CartViewComponent },
       { path: 'home', component: HomeComponent},
+      { path: 'cart/:userId', component: CartViewComponent },
+      { path: 'home/:userId', component: HomeComponent},
       { path: '**', component: HomeComponent} // last
     ]
   }
