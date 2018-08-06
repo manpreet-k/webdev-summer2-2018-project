@@ -20,8 +20,7 @@ export class HomeComponent implements OnInit {
   }
 
   setParams(params) {
-    alert(params.logged);
-    this.logged = params['courseId'];
+    this.logged = params['userId'];
   }
 
   products = [];
