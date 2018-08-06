@@ -12,6 +12,7 @@ import {
   FacebookLoginProvider,
 } from 'angular-6-social-login';
 import {ProductsServiceClient} from './services/products.service.client';
+import { CartViewComponent } from './cart-view/cart-view.component';
 
 // Configs
 export function getAuthServiceConfigs() {
@@ -30,7 +31,8 @@ export function getAuthServiceConfigs() {
   declarations: [
     AppComponent,
     HomeComponent,
-    SignInComponent
+    SignInComponent,
+    CartViewComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,8 @@ export function getAuthServiceConfigs() {
     {
       provide: AuthServiceConfig,
       useFactory: getAuthServiceConfigs
-    }
+    },
+    SignInComponent
   ],
   bootstrap: [AppComponent]
 })

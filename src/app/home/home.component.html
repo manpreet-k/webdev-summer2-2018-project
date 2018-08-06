@@ -24,8 +24,9 @@
         <div class="col-md-6">
           <div class="header-search">
             <form>
-              <input class="input" placeholder="Search here">
-              <button class="search-btn">Search</button>
+              <input  class="form" placeholder="Search here">
+              <button (click)="selectProduct()"
+                      class="search-btn">Search</button>
             </form>
           </div>
         </div>
@@ -33,13 +34,25 @@
 
         <!-- ACCOUNT -->
         <div class="col-md-3 clearfix">
-          <div class="header-ctn">
-              <a routerLink="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+          <div class="header-ctn" *ngIf="logged ">
+              <a routerLink="/cart" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                 <i class="fas fa-shopping-cart"></i>
                 <span>Your Cart</span>
 
               </a>
+            <a routerLink="/signout" class="">
+              <i class="fas fa-sign-out-alt"></i>
+              <span class="align-right"> Sign Out</span>
+
+            </a>
             </div>
+          <div class="header-ctn" *ngIf="!logged ">
+            <a routerLink="/signin" class="">
+              <i class="fas fa-sign-in-alt"></i>
+              <span class="align-right"> Sign in</span>
+
+            </a>
+          </div>
 
           </div>
         <h2>Products</h2>

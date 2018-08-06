@@ -14,8 +14,15 @@ import {
 })
 export class SignInComponent implements OnInit {
 
+
+
+
   constructor(private router: Router,
-              private socialAuthService: AuthService ) {}
+              private socialAuthService: AuthService ) {
+
+  }
+
+
 
   public socialSignIn(socialPlatform: string) {
     let socialPlatformProvider;
@@ -28,9 +35,10 @@ export class SignInComponent implements OnInit {
     this.socialAuthService.signIn(socialPlatformProvider).then(
       (userData) => {
         console.log(socialPlatform + ' sign in data : ' , userData);
-        this.router.navigate(['home']);
+        this.router.navigate(['home/logged']);
 
       }
+
     );
   }
 
