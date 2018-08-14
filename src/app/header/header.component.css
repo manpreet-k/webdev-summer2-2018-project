@@ -6,3 +6,15 @@
   background-image: url('../../assets/images/images.jpg');
   color: white;
 }
+.wh-spacing {
+  margin: 5px;
+  padding: 5px;
+}
+
+.wh-logout {
+  color: red;
+}
+
+.wh-home {
+  color: darkorange;
+}
