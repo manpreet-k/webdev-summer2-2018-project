@@ -11,8 +11,15 @@ import {
   GoogleLoginProvider,
   FacebookLoginProvider,
 } from 'angular-6-social-login';
-import {ProductsServiceClient} from './services/products.service.client';
+import {OtreebaProductsServiceClient} from './services/otreeba-products.service.client';
 import { CartViewComponent } from './cart-view/cart-view.component';
+import { ProducerProfileComponent } from './producer-profile/producer-profile.component';
+import {ProducerProductsServiceClient} from './services/producer-products.service.client';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import { HeaderComponent } from './header/header.component';
+import { RegisterProductsComponent } from './register-products/register-products.component';
+import { ManageProductsComponent } from './manage-products/manage-products.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
 
 // Configs
 export function getAuthServiceConfigs() {
@@ -32,7 +39,13 @@ export function getAuthServiceConfigs() {
     AppComponent,
     HomeComponent,
     SignInComponent,
-    CartViewComponent
+    CartViewComponent,
+    ProducerProfileComponent,
+    ProductDetailsComponent,
+    HeaderComponent,
+    RegisterProductsComponent,
+    ManageProductsComponent,
+    EditProductComponent
   ],
   imports: [
     BrowserModule,
@@ -40,11 +53,12 @@ export function getAuthServiceConfigs() {
     SocialLoginModule
   ],
   providers: [
-    ProductsServiceClient,
+    OtreebaProductsServiceClient,
     {
       provide: AuthServiceConfig,
       useFactory: getAuthServiceConfigs
     },
+    ProducerProductsServiceClient,
     SignInComponent
   ],
   bootstrap: [AppComponent]

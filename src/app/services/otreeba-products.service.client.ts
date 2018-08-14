@@ -1,6 +1,7 @@
+import {Injectable} from '@angular/core';
 
-
-export class ProductsServiceClient {
+@Injectable()
+export class OtreebaProductsServiceClient {
   URL = 'https://api.otreeba.com/v1/products?count=50';
   findAllProducts() {
     return fetch(this.URL)

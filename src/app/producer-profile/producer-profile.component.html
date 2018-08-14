@@ -1,0 +1,19 @@
+<div>
+  <app-header></app-header>
+  <h2>Welcome {{username}}</h2>
+  <button routerLink="/manage-products">Manage Products</button>
+  <h3>My Products</h3>
+  <div class="card-deck">
+    <div *ngFor="let product of listedProducts" class="col-sm-3">
+      <div class="card wbdv-card-size" (click)="productDetails(product._id)">
+        <div class="card-body">
+          <img class="wbdv-img-size"
+               src={{product.image}}
+               alt="Image">
+          <h5 class="card-title">{{product.name}}</h5>
+          <h6>{{product.brandname}}</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

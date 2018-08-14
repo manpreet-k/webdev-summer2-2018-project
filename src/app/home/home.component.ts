@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ProductsServiceClient} from '../services/products.service.client';
+import {OtreebaProductsServiceClient} from '../services/otreeba-products.service.client';
 import {SignInComponent} from '../sign-in/sign-in.component';
 import {ActivatedRoute} from '@angular/router';
 
@@ -13,7 +13,9 @@ import {ActivatedRoute} from '@angular/router';
 
 export class HomeComponent implements OnInit {
   logged = false;
-  constructor(private service: ProductsServiceClient,
+  products = []; // To be populated from Input Field
+  productName;
+  constructor(private service: OtreebaProductsServiceClient,
               private route: ActivatedRoute) {
     this.route.params.subscribe(
       params => this.setParams(params));
@@ -23,10 +25,7 @@ export class HomeComponent implements OnInit {
     this.logged = params['userId'];
   }
 
-  products = [];
-  //To be populated from Input Field
 
-  productName;
   ngOnInit() {
     this.service.findAllProducts()
       .then(products => this.products = products.data);
