@@ -13,11 +13,10 @@ const routes: Routes = [
   {
     path: '',
     children: [
-      { path: 'signin', component: SignInComponent },
+      { path: 'login', component: SignInComponent },
       { path: 'cart', component: CartViewComponent },
       { path: 'home', component: HomeComponent},
       { path: 'cart/:userId', component: CartViewComponent },
-      { path: 'home/:userId', component: HomeComponent},
       { path: 'producer', component: ProducerProfileComponent},
       { path: 'product-details/:productId', component: ProductDetailsComponent},
       { path: 'add-products', component: RegisterProductsComponent},
