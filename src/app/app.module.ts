@@ -21,6 +21,8 @@ import { RegisterProductsComponent } from './register-products/register-products
 import { ManageProductsComponent } from './manage-products/manage-products.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import {UserServiceClient} from './services/user.service.client';
+import { SearchBarCartComponent } from './search-bar-cart/search-bar-cart.component';
+import {FormsModule} from '@angular/forms';
 
 // Configs
 export function getAuthServiceConfigs() {
@@ -46,12 +48,14 @@ export function getAuthServiceConfigs() {
     HeaderComponent,
     RegisterProductsComponent,
     ManageProductsComponent,
-    EditProductComponent
+    EditProductComponent,
+    SearchBarCartComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SocialLoginModule
+    SocialLoginModule,
+    FormsModule
   ],
   providers: [
     OtreebaProductsServiceClient,
