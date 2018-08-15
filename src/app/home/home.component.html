@@ -1,78 +1,20 @@
-
-
-
-
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
-        integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
-        crossorigin="anonymous">
-
-
-    <div class="container">
-
-      <div class="row">
-
-        <div class="col-md-3">
-          <div class="header-logo">
-            <a routerLink="/home" class="logo">
-              <h2 class="primary"> WeedHub</h2>
-            </a>
-          </div>
-        </div>
-
-
-        <!-- SEARCH BAR -->
-        <div class="col-md-6">
-          <div class="header-search">
-            <form>
-              <input  class="form" placeholder="Search here">
-              <button (click)="selectProduct()"
-                      class="search-btn">Search</button>
-            </form>
-          </div>
-        </div>
-        <!-- /SEARCH BAR -->
-
-        <!-- ACCOUNT -->
-        <div class="col-md-3 clearfix">
-          <div class="header-ctn" *ngIf="logged ">
-              <a routerLink="/cart" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                <i class="fas fa-shopping-cart"></i>
-                <span>Your Cart</span>
-
-              </a>
-            <a routerLink="/signout" class="">
-              <i class="fas fa-sign-out-alt"></i>
-              <span class="align-right"> Sign Out</span>
-
-            </a>
-            </div>
-          <div class="header-ctn" *ngIf="!logged ">
-            <a routerLink="/signin" class="">
-              <i class="fas fa-sign-in-alt"></i>
-              <span class="align-right"> Sign in</span>
-
-            </a>
-          </div>
-
-          </div>
-        <h2>Products</h2>
-
-        <div class="card-deck">
-          <div *ngFor="let product of products" class="col-sm-3">
-            <div class="card wbdv-card-size">
-              <div class="card-body">
-                  <img class="wbdv-img-size"
-                        src={{product.image}}
-                        alt="Image">
-                   <h5 class="card-title">{{product.name}}</h5>
-                   <h6>{{product.brand.name}}</h6>
-               </div>
-            </div>
-          </div>
-        </div>
-
+<app-header [username]="user.firstName"></app-header>
+<div class="container-fluid">
+  <h2>Products</h2>
+  <div class="card-deck">
+    <div *ngFor="let product of products" class="col-sm-3">
+      <div class="card wbdv-card-size">
+        <div class="card-body">
+          <img class="wbdv-img-size"
+               src={{product.image}}
+               alt="Image">
+          <h5 class="card-title">{{product.name}}</h5>
+          <h6>{{product.brand.name}}</h6>
         </div>
       </div>
+    </div>
+  </div>
+</div>
 
 
 

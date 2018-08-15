@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {OtreebaProductsServiceClient} from '../services/otreeba-products.service.client';
 import {SignInComponent} from '../sign-in/sign-in.component';
 import {ActivatedRoute} from '@angular/router';
+import {UserServiceClient} from '../services/user.service.client';
 
 
 @Component({
@@ -12,27 +13,25 @@ import {ActivatedRoute} from '@angular/router';
 
 
 export class HomeComponent implements OnInit {
-  logged = false;
+  loggedIn = false;
   products = []; // To be populated from Input Field
   productName;
+  user: any = {};
+
   constructor(private service: OtreebaProductsServiceClient,
-              private route: ActivatedRoute) {
-    this.route.params.subscribe(
-      params => this.setParams(params));
-  }
-
-  setParams(params) {
-    this.logged = params['userId'];
-  }
-
+              private userService: UserServiceClient,
+              private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.service.findAllProducts()
       .then(products => this.products = products.data);
+    this.userService
+      .currentUser()
+      .then(user => {
+        if (user !== null) {
+          this.loggedIn = true;
+          this.user = user;
+        }
+      });
   }
-
-  selectProduct() {
-  alert('search Functionality');
-  }
-
 }
