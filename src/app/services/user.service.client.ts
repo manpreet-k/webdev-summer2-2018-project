@@ -16,7 +16,7 @@ export class UserServiceClient {
       .then(response => response.json())
 
   currentUser = () =>
-    fetch(this.URL + 'api/currentUser', {
+    fetch(this.URL + 'api/profile', {
       credentials: 'include'
     }).then(response => response.json())
 

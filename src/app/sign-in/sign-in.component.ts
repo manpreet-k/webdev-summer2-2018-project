@@ -37,7 +37,7 @@ export class SignInComponent implements OnInit {
             .login(user)
             .then(loggedIn => {
               if (loggedIn !== null) {
-                this.router.navigate(['home/true']);
+                this.router.navigate(['home']);
               } else {
                 this.showError = true;
                 this.errorText = 'Invalid credentials';
