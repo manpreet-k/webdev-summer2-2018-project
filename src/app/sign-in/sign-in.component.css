@@ -1,0 +1,16 @@
+.wh-signin-button {
+  width:30%;
+  height:auto;
+  margin:0 auto;
+  text-align:center;
+  color: white;
+}
+
+.wh-msg-error {
+  color: red;
+  background-color: #FFD2D2;
+  margin: 5px 0px;
+  padding: 5px;
+  border-radius: 5px;
+}
+

@@ -20,6 +20,7 @@ import { HeaderComponent } from './header/header.component';
 import { RegisterProductsComponent } from './register-products/register-products.component';
 import { ManageProductsComponent } from './manage-products/manage-products.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
+import {UserServiceClient} from './services/user.service.client';
 
 // Configs
 export function getAuthServiceConfigs() {
@@ -59,7 +60,7 @@ export function getAuthServiceConfigs() {
       useFactory: getAuthServiceConfigs
     },
     ProducerProductsServiceClient,
-    SignInComponent
+    UserServiceClient
   ],
   bootstrap: [AppComponent]
 })

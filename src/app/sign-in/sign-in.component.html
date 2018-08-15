@@ -1,5 +1,26 @@
-<h1 class="container-fluid">
-  Sign in
-</h1>
+<app-header></app-header>
+<h3 class="container-fluid text-center">
+  Login
+</h3>
+&nbsp;
 
-<button (click)="socialSignIn('google')" class="btn btn-primary">Sign in with Google</button>
+<div class="wh-signin-button">
+  <div class= "wbdv-msg_Error"
+       *ngIf="showError">
+    {{errorText}}
+  </div>
+  <a class="btn btn-block btn-social btn-google"
+     (click)="socialSignIn('google')">
+    <span class="fa fa-google"></span>
+    Sign in with Google
+  </a>
+</div>
+<div class="text-center">
+  <p>No account yet?
+    <a routerLink="/register">
+      Create an account
+    </a>
+  </p>
+</div>
+
+
