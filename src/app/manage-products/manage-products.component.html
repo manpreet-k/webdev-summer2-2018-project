@@ -1,0 +1,26 @@
+<app-header [username]="username"></app-header>
+<div class="container-fluid wh-table">
+  <h3>Manage Products</h3>
+  <button class="btn btn-info">Delete</button>
+  <button class="float-right btn btn-danger">Add</button>
+  <table class="table">
+    <tr>
+      <th>
+        <input type="checkbox" value="selectAll">
+      </th>
+      <th>Products</th>
+      <th>&nbsp;</th>
+    </tr>
+    <tr *ngFor="let product of listedProducts">
+      <td>
+        <input type="checkbox" value={{product._id}}>
+      </td>
+      <td>
+        {{product.name}}
+      </td>
+      <td>
+        <button class="btn btn-warning">Edit</button>
+      </td>
+    </tr>
+  </table>
+</div>

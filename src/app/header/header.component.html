@@ -1,0 +1,30 @@
+<div class="wh-header-size wh-background">
+  <div class="wh-spacing">
+  <div class="text-center">
+    <h1>WeedHub</h1>
+  </div>
+  <div class="row">
+    <div class="col-6">
+    <a routerLink="/home">
+      <i class="wh-icon fa fa-2x fa-home"></i>
+    </a>
+    </div>
+    <div class="col-5 text-right">
+      <h5 *ngIf="username !== undefined">Welcome {{username}}</h5>
+    </div>
+    <div *ngIf="username !== undefined"
+         class="col-1">
+      <a (click)="logout()">
+        <i class="wh-icon btn-link fa fa-2x fa-power-off"></i>
+      </a>
+    </div>
+    <div *ngIf="username === undefined"
+         class="col-1">
+      <button routerLink="/login" class="btn btn-light">
+        <!--<i class="fa fa-2x fa-sign-in"></i>-->
+        Sign In
+      </button>
+    </div>
+  </div>
+  </div>
+</div>
