@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 
 @Injectable()
 export class UserServiceClient {
-  URL = 'http://localhost:3000/';
+  URL = 'http://localhost:4000/';
 
   login = (user) =>
     fetch(this.URL + 'api/login', {
@@ -18,7 +18,8 @@ export class UserServiceClient {
   currentUser = () =>
     fetch(this.URL + 'api/profile', {
       credentials: 'include'
-    }).then(response => response.json())
+    }).then(response => response.text())
+      .then(text => (text ? JSON.parse(text) : null))
 
   register = (user) =>
     fetch(this.URL + 'api/register', {

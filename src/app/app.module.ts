@@ -23,6 +23,9 @@ import { EditProductComponent } from './edit-product/edit-product.component';
 import {UserServiceClient} from './services/user.service.client';
 import { SearchBarCartComponent } from './search-bar-cart/search-bar-cart.component';
 import {FormsModule} from '@angular/forms';
+import { ProductViewerComponent } from './product-viewer/product-viewer.component';
+import { InventoryServiceClient } from './services/inventory.service.client';
+import { ProductServiceClient } from './services/product.service.client';
 
 // Configs
 export function getAuthServiceConfigs() {
@@ -49,7 +52,8 @@ export function getAuthServiceConfigs() {
     RegisterProductsComponent,
     ManageProductsComponent,
     EditProductComponent,
-    SearchBarCartComponent
+    SearchBarCartComponent,
+    ProductViewerComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +68,9 @@ export function getAuthServiceConfigs() {
       useFactory: getAuthServiceConfigs
     },
     ProducerProductsServiceClient,
-    UserServiceClient
+    UserServiceClient,
+    InventoryServiceClient,
+    ProductServiceClient
   ],
   bootstrap: [AppComponent]
 })
