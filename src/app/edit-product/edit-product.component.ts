@@ -12,10 +12,11 @@ export class EditProductComponent implements OnInit {
 
   availability;
   price;
-  user;
+  user: any = {};
   username;
   productId;
   product: any = {};
+  inventoryId;
 
   constructor(private service: ProducerProductsServiceClient,
               private userService: UserServiceClient,
@@ -46,7 +47,7 @@ export class EditProductComponent implements OnInit {
       availability: this.availability
     };
     this.service
-      .updateInventoryProduct(this.productId, item)
+      .updateInventoryProduct(this.inventoryId, this.productId, item)
       .then(res => {
         this.router.navigate(['/manage-products']);
       });
@@ -57,9 +58,13 @@ export class EditProductComponent implements OnInit {
     this.service
       .findProductInInventory(productId)
       .then(product => {
-        this.product = product[0].product;
-        this.availability = product[0].availability;
-        this.price = product[0].price;
+        this.inventoryId = product[0]._id;
+        const item = product[0].items.filter(obj => {
+          return obj._id === productId;
+        });
+        this.product = item[0].product;
+        this.availability = item[0].availability;
+        this.price = item[0].price;
       });
   }
 }

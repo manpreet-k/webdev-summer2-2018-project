@@ -121,8 +121,8 @@ export class ProducerProductsServiceClient {
     })
       .then(response => response.json());
 
-  updateInventoryProduct = (id, item) =>
-    fetch(this.URL + 'api/inventory/item/' + id, {
+  updateInventoryProduct = (inventoryId, itemId, item) =>
+    fetch(this.URL + 'api/inventory/' + inventoryId + '/item/' + itemId , {
       method: 'put',
       credentials: 'include',
       headers: {
