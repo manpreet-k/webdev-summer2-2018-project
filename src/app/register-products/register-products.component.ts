@@ -52,11 +52,14 @@ export class RegisterProductsComponent implements OnInit {
   }
 
   addProdToInventory(product) {
-    product['price'] = this.price[product.ocpc];
-    product['availability'] = this.quantity[product.ocpc];
+    const invProd = {
+      product: product,
+      price: this.price[product.ocpc],
+      availability: this.quantity[product.ocpc]
+    };
 
     this.producerService
-      .addProductToInventory(this.inventory._id, product);
+      .addProductToInventory(this.inventory._id, invProd);
       // .then(res => {
       //
       // });
@@ -79,30 +82,39 @@ export class RegisterProductsComponent implements OnInit {
   }
 
   createInventory(product) {
-    product['price'] = this.price[product.ocpc];
-    product['availability'] = this.quantity[product.ocpc];
+    const invProd = {
+      product: product,
+      price: this.price[product.ocpc],
+      availability: this.quantity[product.ocpc]
+    };
 
     const inv = {
       owner: this.user._id,
-      items: [product]
+      items: [invProd]
     };
 
     this.producerService
-      .createInventory(inv)
+      .createInventory(inv);
       // .then(res => {
       //   alert(res);
       // });
   }
 
   ngOnInit() {
-    this.service.findAllProducts()
-      .then(products => this.products = products.data);
     this.userService
       .currentUser()
       .then(user => {
         if (user !== null) {
           this.loggedIn = true;
           this.user = user;
+
+          if (user.userType === 'PRODUCER') {
+            this.service.findAllProducts()
+              .then(products => this.products = products.data);
+          } else {
+            this.producerService.findAllProducts()
+              .then(products => this.products = products);
+          }
         }
       });
   }

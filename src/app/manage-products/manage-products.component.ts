@@ -34,8 +34,10 @@ export class ManageProductsComponent implements OnInit {
           this.service
             .findAllListedProducts(user)
             .then(inv => {
-              this.inventory = inv[0];
-              this.listedProducts = inv[0].items;
+              if (inv.length > 0) {
+                this.inventory = inv[0];
+                this.listedProducts = inv[0].items;
+              }
             });
         } else {
           alert('Session expired');
@@ -44,9 +46,9 @@ export class ManageProductsComponent implements OnInit {
       });
   }
 
-  deleteProduct(product) {
+  deleteProduct(id) {
     this.service
-      .deleteProductFromInventory(this.inventory._id, product)
+      .deleteProductFromInventory(this.inventory._id, id)
       .then(res => this.loadProducts());
   }
 }
