@@ -1,35 +1,29 @@
 <app-header [username]="user.firstName"></app-header>
-<!--<div class="container-fluid">-->
-  <!--<div>Profile Image</div>-->
-  <!--<div>Rating</div>-->
-  <!--<div>Products sold</div>-->
-  <!--<div><button routerLink="/information/producerId">Personal Information</button></div>-->
-  <!--<div><button routerLink="/manage-products">Products</button></div>-->
-  <!--<div><button routerLink="/retailers/producerId">Associated Retailers</button></div>-->
-<!--</div>-->
-
 <div class="container-fluid">
-  <div>
+  <div class="row wh-size">
+    <div class="col-10">
+      <div>
+        <a>Associated Users</a>
+      </div>
+    </div>
     <button *ngIf="user.userType === 'RETAILER'"
-            class="btn btn-info"
+            class="btn btn-info col-2"
             routerLink="/manage-products">
       Manage Inventory
     </button>
     <button *ngIf="user.userType === 'PRODUCER'"
-            class="btn btn-info"
+            class="btn btn-info col-2"
             routerLink="/manage-products">
       Manage Inventory
     </button>
   </div>
-  <div>
-    <a>Associated Users</a>
-  </div>
   <div class="row">
     <div class="col-6">
       <h5>Personal Information</h5>
-      <app-user-personal-info [userId] = "userId"></app-user-personal-info>
+      <app-user-personal-info [userId]="userId"></app-user-personal-info>
     </div>
     <div class="col-6">
+      <h5>Order Information</h5>
       <ul class="nav nav-tabs">
         <li class="nav-item">
           <a class="nav-link"

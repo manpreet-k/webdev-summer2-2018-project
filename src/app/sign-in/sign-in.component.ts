@@ -33,7 +33,8 @@ export class SignInComponent implements OnInit {
       (userData) => {
         if (userData.email !== '') {
           const user = {
-            email: userData.email
+            email: userData.email,
+            isSocialLogin: true
           };
           this.loginUser(user);
         } else {
@@ -47,7 +48,8 @@ export class SignInComponent implements OnInit {
   login() {
     const user = {
       email: this.email,
-      password: this.password
+      password: this.password,
+      isSocialLogin: false
     };
     this.loginUser(user);
   }
