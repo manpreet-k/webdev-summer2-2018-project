@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
-import * as products from './producer-listing.json';
+import { NODE } from './const-url';
 
 @Injectable()
 export class ProducerProductsServiceClient {
 
-  URL = 'http://localhost:3000/';
+  URL = NODE + '/';
 
   findAllListedProducts = (user) =>
     fetch(this.URL + 'api/inventory/' + user._id, {
