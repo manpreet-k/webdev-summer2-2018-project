@@ -18,10 +18,10 @@ const routes: Routes = [
       { path: 'home', component: HomeComponent},
       { path: 'cart/:userId', component: CartViewComponent },
       { path: 'producer', component: ProducerProfileComponent},
-      { path: 'product-details/:productId', component: ProductDetailsComponent},
+      { path: 'product/:productId', component: ProductDetailsComponent},
       { path: 'add-products', component: RegisterProductsComponent},
       { path: 'manage-products', component: ManageProductsComponent},
-      { path: 'edit-product', component: EditProductComponent},
+      { path: 'edit/:productId', component: EditProductComponent},
       { path: '**', component: HomeComponent} // last
     ]
   }

@@ -1,3 +1,21 @@
-<p>
-  edit-product works!
-</p>
+<app-header [username]="user.firstName"></app-header>
+<div class="container-fluid">
+  <h5>{{product.name}}</h5>
+
+  <label>Image URL</label>
+  <input [(ngModel)]="product.image"
+         class="form-control">
+
+  <label>Quantity available</label>
+  <input [(ngModel)]="product.availability"
+         class="form-control">
+
+  <label>Price per piece</label>
+  <input [(ngModel)]="product.price"
+         class="form-control">
+
+  <button class="btn btn-success" (click)="submit()">
+    Update Product
+  </button>
+
+</div>
