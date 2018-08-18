@@ -14,6 +14,8 @@ export class UserPersonalInfoComponent implements OnInit {
 
   user: any = {};
   openOrders: any = {};
+  editMode = false;
+  tmpUser: any = {};
 
   constructor(private service: ProducerProductsServiceClient,
               private userService: UserServiceClient,
@@ -21,7 +23,22 @@ export class UserPersonalInfoComponent implements OnInit {
               private router: Router) {}
 
   update() {
+    this.userService
+      .update(this.user)
+      .then(newUser => {
+        this.user = newUser;
+        this.editMode = false;
+      });
+  }
 
+  enableEdit() {
+    this.tmpUser = Object.assign({}, this.user);
+    this.editMode = true;
+  }
+
+  cancelEdit() {
+    this.editMode = false;
+    this.user = Object.assign({}, this.tmpUser);
   }
 
   ngOnInit() {
