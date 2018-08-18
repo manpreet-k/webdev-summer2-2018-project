@@ -58,7 +58,7 @@ export function getAuthServiceConfigs() {
     SearchBarCartComponent,
     SignUpComponent,
     UserPersonalInfoComponent,
-    OrderListComponent
+    OrderListComponent,
     ProductViewerComponent
   ],
   imports: [
