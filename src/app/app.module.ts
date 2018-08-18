@@ -13,7 +13,7 @@ import {
 } from 'angular-6-social-login';
 import {OtreebaProductsServiceClient} from './services/otreeba-products.service.client';
 import { CartViewComponent } from './cart-view/cart-view.component';
-import { ProducerProfileComponent } from './producer-profile/producer-profile.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 import {ProducerProductsServiceClient} from './services/producer-products.service.client';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { HeaderComponent } from './header/header.component';
@@ -23,6 +23,9 @@ import { EditProductComponent } from './edit-product/edit-product.component';
 import {UserServiceClient} from './services/user.service.client';
 import { SearchBarCartComponent } from './search-bar-cart/search-bar-cart.component';
 import {FormsModule} from '@angular/forms';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { UserPersonalInfoComponent } from './user-personal-info/user-personal-info.component';
+import { OrderListComponent } from './order-list/order-list.component';
 
 // Configs
 export function getAuthServiceConfigs() {
@@ -43,13 +46,16 @@ export function getAuthServiceConfigs() {
     HomeComponent,
     SignInComponent,
     CartViewComponent,
-    ProducerProfileComponent,
+    UserProfileComponent,
     ProductDetailsComponent,
     HeaderComponent,
     RegisterProductsComponent,
     ManageProductsComponent,
     EditProductComponent,
-    SearchBarCartComponent
+    SearchBarCartComponent,
+    SignUpComponent,
+    UserPersonalInfoComponent,
+    OrderListComponent
   ],
   imports: [
     BrowserModule,

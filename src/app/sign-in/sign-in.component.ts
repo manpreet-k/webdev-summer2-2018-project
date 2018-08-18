@@ -13,6 +13,8 @@ export class SignInComponent implements OnInit {
 
   showError = false;
   errorText = '';
+  email;
+  password;
 
   constructor(private router: Router,
               private socialAuthService: AuthService,
@@ -33,26 +35,42 @@ export class SignInComponent implements OnInit {
           const user = {
             email: userData.email
           };
-          this.userService
-            .login(user)
-            .then(loggedIn => {
-              if (loggedIn !== null) {
-                this.router.navigate(['home']);
-              } else {
-                this.showError = true;
-                this.errorText = 'Invalid credentials';
-              }
-            })
-            .catch(error => {
-              this.showError = true;
-              this.errorText = 'Invalid credentials';
-            });
+          this.loginUser(user);
         } else {
           this.showError = true;
           this.errorText = 'Username empty';
         }
       }
     );
+  }
+
+  login() {
+    const user = {
+      email: this.email,
+      password: this.password
+    };
+    this.loginUser(user);
+  }
+
+  loginUser(user) {
+    this.userService
+      .login(user)
+      .then(loggedIn => {
+        if (loggedIn !== null) {
+          if (loggedIn.userType === 'BUYER') {
+            this.router.navigate(['home']);
+          } else {
+            this.router.navigate(['profile/' + loggedIn._id]);
+          }
+        } else {
+          this.showError = true;
+          this.errorText = 'Invalid credentials';
+        }
+      })
+      .catch(error => {
+        this.showError = true;
+        this.errorText = 'Invalid credentials';
+      });
   }
 
   ngOnInit() {

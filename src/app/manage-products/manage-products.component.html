@@ -9,12 +9,12 @@
     </span>
   </div>
   <ul class="list-group">
-    <li *ngFor="let product of listedProducts" class="list-group-item">
-      {{product.name}}
+    <li *ngFor="let item of listedProducts" class="list-group-item">
+      {{item.product.name}}
       <span class="float-right">
-          <i class="fa fa-pencil" routerLink="/edit/{{product._id}}"></i>
+          <i class="fa fa-pencil" routerLink="/edit/{{item._id}}"></i>
         &nbsp;
-          <a class="fa fa-times" (click)="deleteProduct(product)"></a>
+          <a class="fa fa-times" (click)="deleteProduct(item._id)"></a>
         </span>
     </li>
   </ul>

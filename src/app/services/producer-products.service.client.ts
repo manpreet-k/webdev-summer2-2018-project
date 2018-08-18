@@ -63,7 +63,8 @@ export class ProducerProductsServiceClient {
       credentials: 'include',
       headers: {
         'content-type': 'application/json'
-      }
+      },
+      body: JSON.stringify(product)
     })
       .then(response => response.json())
 
@@ -78,8 +79,8 @@ export class ProducerProductsServiceClient {
     })
       .then(response => response.json())
 
-  deleteProductFromInventory = (inventoryId, product) =>
-    fetch(this.URL + 'api/inventory/' + inventoryId + '/product/' + product._id, {
+  deleteProductFromInventory = (inventoryId, id) =>
+    fetch(this.URL + 'api/inventory/' + inventoryId + '/product/' + id, {
       method: 'delete',
       credentials: 'include',
       headers: {
@@ -98,4 +99,38 @@ export class ProducerProductsServiceClient {
       body: JSON.stringify(product)
     })
       .then(response => response.json());
+
+  findAllProducts = () =>
+    fetch(this.URL + 'api/product/', {
+      method: 'get',
+      credentials: 'include',
+      headers: {
+        'content-type': 'application/json'
+      },
+    })
+      .then(response => response.json());
+
+
+  findProductInInventory = (id) =>
+    fetch(this.URL + 'api/inventory/item/' + id, {
+      method: 'get',
+      credentials: 'include',
+      headers: {
+        'content-type': 'application/json'
+      },
+    })
+      .then(response => response.json());
+
+  updateInventoryProduct = (id, item) =>
+    fetch(this.URL + 'api/inventory/item/' + id, {
+      method: 'put',
+      credentials: 'include',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(item)
+    })
+      .then(response => response.json());
+
+
 }
