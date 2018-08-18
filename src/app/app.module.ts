@@ -26,6 +26,9 @@ import {FormsModule} from '@angular/forms';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { UserPersonalInfoComponent } from './user-personal-info/user-personal-info.component';
 import { OrderListComponent } from './order-list/order-list.component';
+import { ProductViewerComponent } from './product-viewer/product-viewer.component';
+import { InventoryServiceClient } from './services/inventory.service.client';
+import { ProductServiceClient } from './services/product.service.client';
 
 // Configs
 export function getAuthServiceConfigs() {
@@ -56,6 +59,7 @@ export function getAuthServiceConfigs() {
     SignUpComponent,
     UserPersonalInfoComponent,
     OrderListComponent
+    ProductViewerComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +74,9 @@ export function getAuthServiceConfigs() {
       useFactory: getAuthServiceConfigs
     },
     ProducerProductsServiceClient,
-    UserServiceClient
+    UserServiceClient,
+    InventoryServiceClient,
+    ProductServiceClient
   ],
   bootstrap: [AppComponent]
 })

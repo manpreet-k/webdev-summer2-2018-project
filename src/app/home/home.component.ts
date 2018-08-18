@@ -3,6 +3,7 @@ import {OtreebaProductsServiceClient} from '../services/otreeba-products.service
 import {SignInComponent} from '../sign-in/sign-in.component';
 import {ActivatedRoute} from '@angular/router';
 import {UserServiceClient} from '../services/user.service.client';
+import { ProductServiceClient } from '../services/product.service.client';
 
 
 @Component({
@@ -18,13 +19,13 @@ export class HomeComponent implements OnInit {
   productName;
   user: any = {};
 
-  constructor(private service: OtreebaProductsServiceClient,
+  constructor(private productService: ProductServiceClient,
               private userService: UserServiceClient,
               private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.service.findAllProducts()
-      .then(products => this.products = products.data);
+    this.productService.findAllActiveProducts()
+      .then(products => this.products = products);
     this.userService
       .currentUser()
       .then(user => {
