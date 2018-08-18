@@ -8,6 +8,7 @@ import {ProductDetailsComponent} from './product-details/product-details.compone
 import {RegisterProductsComponent} from './register-products/register-products.component';
 import {ManageProductsComponent} from './manage-products/manage-products.component';
 import {EditProductComponent} from './edit-product/edit-product.component';
+import { ProductViewerComponent } from './product-viewer/product-viewer.component';
 
 const routes: Routes = [
   {
@@ -21,7 +22,8 @@ const routes: Routes = [
       { path: 'product/:productId', component: ProductDetailsComponent},
       { path: 'add-products', component: RegisterProductsComponent},
       { path: 'manage-products', component: ManageProductsComponent},
-      { path: 'edit/:productId', component: EditProductComponent},
+      { path: 'edit-product', component: EditProductComponent},
+      { path: 'product/:productId', component: ProductViewerComponent },
       { path: '**', component: HomeComponent} // last
     ]
   }
