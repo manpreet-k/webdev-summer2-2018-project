@@ -12,6 +12,7 @@ export class ProductViewerComponent implements OnInit {
 
   product;
   inventories;
+  listings;
 
   constructor(private productService: ProductServiceClient,
     private inventoryService: InventoryServiceClient,
@@ -20,13 +21,29 @@ export class ProductViewerComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
       this.productService.findProductById(params.productId)
-        .then(product => this.product = product);
-      this.inventoryService.findAllInventoriesForProduct(params.productId)
-        .then(inventories => this.inventories = inventories);
+        .then(product => {
+          this.product = product;
+          this.inventoryService.findAllInventoriesForProduct(params.productId)
+            .then(inventories => {
+              this.listings = this.retrieveListings(inventories, product);
+            });
+        });
     });
   }
 
-  showListing(inventory) {
+  retrieveListings(inventories, product) {
+    const listings = [];
+    for (const inventory of inventories) {
+      for (const item of inventory.items) {
+        if (item.product._id === product._id) {
+          listings.push({ item, owner: inventory.owner });
+        }
+      }
+    }
+    return listings;
+  }
+
+  buyProduct(listing) {
 
   }
 
