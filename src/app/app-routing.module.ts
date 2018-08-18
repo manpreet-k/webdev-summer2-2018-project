@@ -8,6 +8,8 @@ import {ProductDetailsComponent} from './product-details/product-details.compone
 import {RegisterProductsComponent} from './register-products/register-products.component';
 import {ManageProductsComponent} from './manage-products/manage-products.component';
 import {EditProductComponent} from './edit-product/edit-product.component';
+import {AdminPageComponent} from './admin-page/admin-page.component';
+import {AdminSectionOrdersComponent} from './admin-section-orders/admin-section-orders.component';
 
 const routes: Routes = [
   {
@@ -22,6 +24,9 @@ const routes: Routes = [
       { path: 'add-products', component: RegisterProductsComponent},
       { path: 'manage-products', component: ManageProductsComponent},
       { path: 'edit/:productId', component: EditProductComponent},
+      { path: 'admin', component: AdminPageComponent},
+      { path: 'admin/profile/:username', component : AdminPageComponent},
+      { path: 'admin/:username/orders', component : AdminSectionOrdersComponent},
       { path: '**', component: HomeComponent} // last
     ]
   }

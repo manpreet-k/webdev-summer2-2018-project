@@ -23,6 +23,9 @@ import { EditProductComponent } from './edit-product/edit-product.component';
 import {UserServiceClient} from './services/user.service.client';
 import { SearchBarCartComponent } from './search-bar-cart/search-bar-cart.component';
 import {FormsModule} from '@angular/forms';
+import { AdminPageComponent } from './admin-page/admin-page.component';
+import { AdminSectionOrdersComponent } from './admin-section-orders/admin-section-orders.component';
+import { AdminSectionProfileComponent } from './admin-section-profile/admin-section-profile.component';
 
 // Configs
 export function getAuthServiceConfigs() {
@@ -49,7 +52,10 @@ export function getAuthServiceConfigs() {
     RegisterProductsComponent,
     ManageProductsComponent,
     EditProductComponent,
-    SearchBarCartComponent
+    SearchBarCartComponent,
+    AdminPageComponent,
+    AdminSectionOrdersComponent,
+    AdminSectionProfileComponent
   ],
   imports: [
     BrowserModule,

@@ -18,7 +18,7 @@ export class UserServiceClient {
   currentUser = () =>
     fetch(this.URL + 'api/profile', {
       credentials: 'include'
-    }).then(response => response.json())
+    }).then(response => response.json(), response => response.send([200]))
 
   register = (user) =>
     fetch(this.URL + 'api/register', {
@@ -32,7 +32,7 @@ export class UserServiceClient {
       .then(response => response.json())
 
   findUserByUsername = (username) =>
-    fetch(this.URL + 'api/username/' + username, {
+    fetch(this.URL + 'api/user/' + username, {
       method: 'get',
       credentials: 'include',
       headers: {
@@ -41,6 +41,15 @@ export class UserServiceClient {
     })
       .then(response => response.json())
 
+  findAllUsers = () =>
+    fetch(this.URL + 'api/user', {
+      method: 'get',
+      credentials: 'include',
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+      .then(response => response.json())
 
   profile = () => {
     return fetch(this.URL + 'api/profile',
