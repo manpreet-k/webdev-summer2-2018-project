@@ -2,12 +2,14 @@
   <a routerLink='/home' class="mx-2">
     <i class="fas fa-2x fa-times"></i>
   </a>
-  <img class="wbdv-img-size" src={{product.image}} alt="Image">
-  <h1>{{product?.name}}</h1>
+  <h1>Listings For:</h1>
+  <h3>{{product?.name}}</h3>
 
   <ul class="list-group">
-    <li *ngFor="let inventory of inventories" class="list-group-item">
-      {{inventory.owner.username}}
+    <li *ngFor="let listing of listings" class="list-group-item">
+      {{listing.owner.username}} - ${{listing.item.pricePerUnit}} - {{listing.item.count}} in stock
+      <a routerLink='/profile/{{listing.owner._id}}' class="btn btn-success float-right">View Profile</a>
+      <button (click)="buyProduct(listing)" class="btn btn-primary float-right mr-2">Buy</button>
     </li>
   </ul>
 </div>

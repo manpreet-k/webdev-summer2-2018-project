@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ProducerProductsServiceClient} from '../services/producer-products.service.client';
+import {UserServiceClient} from '../services/user.service.client';
 
 @Component({
   selector: 'app-edit-product',
@@ -7,9 +10,61 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditProductComponent implements OnInit {
 
-  constructor() { }
+  availability;
+  price;
+  user: any = {};
+  username;
+  productId;
+  product: any = {};
+  inventoryId;
 
-  ngOnInit() {
+  constructor(private service: ProducerProductsServiceClient,
+              private userService: UserServiceClient,
+              private aRoute: ActivatedRoute,
+              private router: Router) {
+    this.aRoute.params.subscribe(
+      params => this.loadProduct(params['productId']));
   }
 
+  ngOnInit() {
+    this.userService
+      .currentUser()
+      .then(user => {
+        if (user !== null) {
+          this.user = user;
+          this.username = user.firstName;
+        } else {
+          alert('Session expired');
+          this.router.navigate(['/home']);
+        }
+      });
+  }
+
+  submit() {
+    const item = {
+      product: this.product,
+      price: this.price,
+      availability: this.availability
+    };
+    this.service
+      .updateInventoryProduct(this.inventoryId, this.productId, item)
+      .then(res => {
+        this.router.navigate(['/manage-products']);
+      });
+  }
+
+  loadProduct(productId) {
+    this.productId = productId;
+    this.service
+      .findProductInInventory(productId)
+      .then(product => {
+        this.inventoryId = product[0]._id;
+        const item = product[0].items.filter(obj => {
+          return obj._id === productId;
+        });
+        this.product = item[0].product;
+        this.availability = item[0].availability;
+        this.price = item[0].price;
+      });
+  }
 }

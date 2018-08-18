@@ -1,3 +1,19 @@
-<p>
-  register-products works!
-</p>
+<app-header></app-header>
+<div class="container-fluid">
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let product of products">
+      {{product.name}}
+      <span class="float-right">
+        <input [(ngModel)]="quantity[product.ocpc]"
+               type="text"
+               placeholder="Quantity">
+        &nbsp;
+        <input [(ngModel)]="price[product.ocpc]"
+               type="text"
+               placeholder="Price in USD">
+        &nbsp;
+        <button class="fa fa-plus btn-sm btn-warning" (click)="add(product)"></button>
+      </span>
+    </li>
+  </ul>
+</div>

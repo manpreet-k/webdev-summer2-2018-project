@@ -1,0 +1,50 @@
+<app-header [username]="user.firstName"></app-header>
+<div class="container-fluid">
+  <div class="row wh-size">
+    <div class="col-10">
+      <div>
+        <a>Associated Users</a>
+      </div>
+    </div>
+    <button *ngIf="user.userType === 'RETAILER'"
+            class="btn btn-info col-2"
+            routerLink="/manage-products">
+      Manage Inventory
+    </button>
+    <button *ngIf="user.userType === 'PRODUCER'"
+            class="btn btn-info col-2"
+            routerLink="/manage-products">
+      Manage Inventory
+    </button>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <h5>Personal Information</h5>
+      <app-user-personal-info [userId]="userId"></app-user-personal-info>
+    </div>
+    <div class="col-6">
+      <h5>Order Information</h5>
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link"
+             routerLink="/user/{{user._id}}/open">
+            Open Orders
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"
+             routerLink="/user/{{user._id}}/cancel">
+            Canceled Orders
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"
+             routerLink="/user/{{user._id}}/past">
+            Fulfilled Orders
+          </a>
+        </li>
+      </ul>
+      <app-order-list></app-order-list>
+    </div>
+  </div>
+</div>
