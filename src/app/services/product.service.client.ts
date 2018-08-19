@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 
 import { NODE } from './const-url';
 
@@ -6,10 +6,15 @@ import { NODE } from './const-url';
 export class ProductServiceClient {
   URL = NODE + '/';
 
-    findAllActiveProducts() {
-        return fetch(NODE + '/api/product/active')
-            .then(response => response.json());
-    }
+  findListedByRetailer() {
+    return fetch(NODE + '/api/product/retailer')
+      .then(response => response.json());
+  }
+
+  findListedByProducer() {
+    return fetch(NODE + '/api/product/producer')
+      .then(response => response.json());
+  }
 
   createProduct = (product) =>
     fetch(this.URL + 'api/product/', {
@@ -29,7 +34,7 @@ export class ProductServiceClient {
         'content-type': 'application/json'
       },
     })
-      .then(response => response.json());
+      .then(response => response.json())
 
   updateProduct = (product) =>
     fetch(this.URL + 'api/product/' + product._id, {
@@ -60,5 +65,5 @@ export class ProductServiceClient {
         'content-type': 'application/json'
       },
     })
-      .then(response => response.json());
+      .then(response => response.json())
 }

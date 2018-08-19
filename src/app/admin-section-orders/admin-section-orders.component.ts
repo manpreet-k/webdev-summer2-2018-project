@@ -26,6 +26,11 @@ export class AdminSectionOrdersComponent implements OnInit {
   username = 'Visitor';
 
 
+  orders: any = {};
+
+  username = 'Visitor';
+
+
   constructor(private route: ActivatedRoute,
               private userService: UserServiceClient,
               private orderService: OrderServiceClient) {
