@@ -15,13 +15,13 @@
       <th></th>
     </tr>
     <tr >
-      <td><input [(ngModel)]="Requester" class="form-control" value=""
+      <td><input [(ngModel)]="order.Requester" class="form-control" value=""
                  placeholder="Retailer Name" /></td>
-      <td><input [(ngModel)]="Receiver"  class="form-control"
+      <td><input [(ngModel)]="order.Receiver"  class="form-control"
                  placeholder="Buyer Name" /></td>
-      <td><input [(ngModel)]="Price"  class="form-control"
+      <td><input [(ngModel)]="order.Price"  class="form-control"
                  placeholder="Order Value" disabled/></td>
-      <td> <input [(ngModel)]="OrderStatus"  class="form-control"
+      <td> <input [(ngModel)]="order.OrderStatus"  class="form-control"
                  placeholder="Order status" /> </td>
       <td><span class="float-right" style="white-space: nowrap">
 							 <i class="fa-2x fa fa-plus "  (click)="createOrder()"></i>

@@ -3,6 +3,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {UserServiceClient} from '../services/user.service.client';
 import {InventoryServiceClient} from '../services/inventory.service.client';
 import {ProductServiceClient} from '../services/product.service.client';
+import { User } from '../models/user.model.client';
+import { Product } from '../models/product.model.client';
 
 @Component({
   selector: 'app-edit-product',
@@ -13,10 +15,10 @@ export class EditProductComponent implements OnInit {
 
   availability;
   price;
-  user: any = {};
+  user: User;
   username;
   productId;
-  product: any = {};
+  product: Product;
   inventoryId;
   originalImage;
 
