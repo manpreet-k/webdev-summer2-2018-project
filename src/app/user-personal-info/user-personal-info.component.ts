@@ -12,7 +12,7 @@ export class UserPersonalInfoComponent implements OnInit {
 
   @Input() userId;
 
-  user: User;
+  user: User = new User();
   editMode = false;
   tmpUser: User;
   visitor = false;
