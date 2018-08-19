@@ -107,4 +107,28 @@ export class OrderServiceClient {
       .then(response => response.json());
   }
 
+  cancelOrder(order) {
+    return fetch(NODE + '/api/order/cancel', {
+      method: 'put',
+      credentials: 'include',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(order)
+    })
+      .then(response => response.json());
+  }
+
+  fulfillOrder(order) {
+    return fetch(NODE + '/api/order/fulfill', {
+      method: 'put',
+      credentials: 'include',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(order)
+    })
+      .then(response => response.json());
+  }
+
 }

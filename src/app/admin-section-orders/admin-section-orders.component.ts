@@ -46,13 +46,13 @@ export class AdminSectionOrdersComponent implements OnInit {
   }
 
 
-  updateOrder(){
+  updateOrder() {
     this.newOrder.requester['firstName'] = this.Requester;
     this.newOrder.receiver['firstName'] = this.Receiver;
     // this.newOrder.items[0].pricePerUnit = this.Price;
     this.newOrder.status = this.OrderStatus;
     console.log(this.newOrder);
-    this.orderService.updateOrder(this.newOrder._id,this.newOrder)
+    this.orderService.updateOrder(this.newOrder._id, this.newOrder)
       .then(response => console.log(response));
 
   }
@@ -60,8 +60,7 @@ export class AdminSectionOrdersComponent implements OnInit {
 
 
 
-  editSection(order)
-  {
+  editSection(order) {
 
     this.Requester = order.requester['firstName'];
 

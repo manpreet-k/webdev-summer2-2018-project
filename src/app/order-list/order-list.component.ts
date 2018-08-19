@@ -33,12 +33,8 @@ export class OrderListComponent implements OnInit {
   }
 
   cancelOrder(order) {
-    const status = {
-      status: 'CANCELLED'
-    };
-
     this.service
-      .updateOrderStatus(order._id, status)
+      .cancelOrder(order)
       .then(newOrder => {
         this.loadOrders();
       });
@@ -49,12 +45,8 @@ export class OrderListComponent implements OnInit {
   }
 
   fulfillOrder(order) {
-    const status = {
-      status: 'FULFILLED'
-    };
-
     this.service
-      .updateOrderStatus(order._id, status)
+      .fulfillOrder(order)
       .then(newOrder => {
         this.loadOrders();
       });
