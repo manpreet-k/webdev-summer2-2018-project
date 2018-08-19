@@ -14,6 +14,7 @@ export class UserPersonalInfoComponent implements OnInit {
   user: any = {};
   editMode = false;
   tmpUser: any = {};
+  visitor = false;
 
   constructor(private userService: UserServiceClient,
               private aRoute: ActivatedRoute,
@@ -44,6 +45,7 @@ export class UserPersonalInfoComponent implements OnInit {
       .then (user => {
         if (user !== null) {
           this.user = user;
+          this.visitor = user._id !== this.userId;
         } else {
           alert('Session Expired');
           this.router.navigate(['/home']);

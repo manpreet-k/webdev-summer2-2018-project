@@ -34,7 +34,7 @@ export class UserServiceClient {
       .then(response => response.json())
 
   findUserByUsername = (username) =>
-    fetch(this.URL + 'api/username/' + username, {
+    fetch(this.URL + 'api/register/' + username, {
       method: 'get',
       credentials: 'include',
       headers: {
@@ -43,6 +43,15 @@ export class UserServiceClient {
     })
       .then(response => response.json())
 
+  findAllUsers = () =>
+    fetch(this.URL + 'api/user', {
+      method: 'get',
+      credentials: 'include',
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+      .then(response => response.json())
 
   profile = () => {
     return fetch(this.URL + 'api/profile',
@@ -68,6 +77,12 @@ export class UserServiceClient {
       .then(response => response.json());
   }
 
+  delete(userId) {
+    return fetch(this.URL + 'api/profile/' + userId, {
+      method: 'delete',
+      credentials: 'include'
+    });
+  }
   logout = () => {
     return fetch(this.URL + 'api/logout', {
       method: 'post',

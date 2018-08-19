@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SearchBarCartComponent implements OnInit {
 
-  @Input() loggedIn;
+  @Input() userId;
   searchText = '';
 
   constructor() { }

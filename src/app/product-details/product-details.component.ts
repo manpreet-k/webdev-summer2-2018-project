@@ -9,7 +9,7 @@
 })
 export class ProductDetailsComponent implements OnInit {
 
-  product = {};
+  product: any = {};
   constructor(private service: ProductServiceClient,
               private aRoute: ActivatedRoute,
               private router: Router) {

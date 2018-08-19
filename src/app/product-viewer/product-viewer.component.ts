@@ -15,6 +15,7 @@ export class ProductViewerComponent implements OnInit {
   inventories;
   listings;
   selectedListing;
+  buyAmount = 1;
 
   constructor(private productService: ProductServiceClient,
     private inventoryService: InventoryServiceClient,
@@ -47,7 +48,10 @@ export class ProductViewerComponent implements OnInit {
 
   selectListing(listing) {
     this.selectedListing = listing;
-    console.log(this.selectedListing);
+  }
+
+  addToCart() {
+    console.log(this.buyAmount);
   }
 
 }
