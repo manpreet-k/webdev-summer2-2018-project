@@ -28,6 +28,7 @@ import { OrderListComponent } from './order-list/order-list.component';
 import { ProductViewerComponent } from './product-viewer/product-viewer.component';
 import { InventoryServiceClient } from './services/inventory.service.client';
 import { ProductServiceClient } from './services/product.service.client';
+import {OrderServiceClient} from './services/order.service.client';
 
 // Configs
 export function getAuthServiceConfigs() {
@@ -74,7 +75,8 @@ export function getAuthServiceConfigs() {
     },
     UserServiceClient,
     InventoryServiceClient,
-    ProductServiceClient
+    ProductServiceClient,
+    OrderServiceClient
   ],
   bootstrap: [AppComponent]
 })

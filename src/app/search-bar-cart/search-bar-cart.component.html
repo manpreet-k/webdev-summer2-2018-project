@@ -20,16 +20,11 @@
       </div>
     </div>
     <div class="col-2">
-      <a *ngIf="loggedIn"
-         routerLink="/">
-        <i class="fa fa-2x fa-history wh-icon"></i>
-      </a>
-      &nbsp;
-      <a *ngIf="loggedIn" routerLink="/">
+      <a *ngIf="userId" routerLink="/profile/{{userId}}">
         <i class="fa fa-2x fa-user-circle wh-icon"></i>
       </a>
       &nbsp;
-      <a *ngIf="loggedIn"
+      <a *ngIf="userId"
          routerLink="/cart">
         <i class="fa fa-2x fa-shopping-cart wh-icon"></i>
       </a>

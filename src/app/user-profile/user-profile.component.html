@@ -2,9 +2,6 @@
 <div class="container-fluid">
   <div class="row wh-size">
     <div class="col-10">
-      <div>
-        <a>Associated Users</a>
-      </div>
     </div>
     <button *ngIf="user.userType === 'RETAILER'"
             class="btn btn-info col-2"
@@ -25,21 +22,21 @@
     <div class="col-6">
       <h5>Order Information</h5>
       <ul class="nav nav-tabs">
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link"
-             routerLink="/user/{{user._id}}/open">
+             routerLink="/user/{{user._id}}/OPEN">
             Open Orders
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link"
-             routerLink="/user/{{user._id}}/cancel">
+             routerLink="/user/{{user._id}}/CANCELLED">
             Canceled Orders
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link"
-             routerLink="/user/{{user._id}}/past">
+             routerLink="/user/{{user._id}}/FULFILLED">
             Fulfilled Orders
           </a>
         </li>
