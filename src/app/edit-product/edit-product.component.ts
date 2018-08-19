@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ProducerProductsServiceClient} from '../services/producer-products.service.client';
 import {UserServiceClient} from '../services/user.service.client';
+import {InventoryServiceClient} from '../services/inventory.service.client';
 
 @Component({
   selector: 'app-edit-product',
@@ -18,7 +18,7 @@ export class EditProductComponent implements OnInit {
   product: any = {};
   inventoryId;
 
-  constructor(private service: ProducerProductsServiceClient,
+  constructor(private service: InventoryServiceClient,
               private userService: UserServiceClient,
               private aRoute: ActivatedRoute,
               private router: Router) {

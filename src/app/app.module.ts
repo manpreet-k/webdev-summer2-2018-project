@@ -14,7 +14,6 @@ import {
 import {OtreebaProductsServiceClient} from './services/otreeba-products.service.client';
 import { CartViewComponent } from './cart-view/cart-view.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import {ProducerProductsServiceClient} from './services/producer-products.service.client';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { HeaderComponent } from './header/header.component';
 import { RegisterProductsComponent } from './register-products/register-products.component';
@@ -73,7 +72,6 @@ export function getAuthServiceConfigs() {
       provide: AuthServiceConfig,
       useFactory: getAuthServiceConfigs
     },
-    ProducerProductsServiceClient,
     UserServiceClient,
     InventoryServiceClient,
     ProductServiceClient

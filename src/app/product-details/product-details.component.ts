@@ -1,6 +1,6 @@
  import { Component, OnInit } from '@angular/core';
- import {ProducerProductsServiceClient} from '../services/producer-products.service.client';
  import {ActivatedRoute, Router} from '@angular/router';
+ import {ProductServiceClient} from '../services/product.service.client';
 
 @Component({
   selector: 'app-product-details',
@@ -10,7 +10,7 @@
 export class ProductDetailsComponent implements OnInit {
 
   product = {};
-  constructor(private service: ProducerProductsServiceClient,
+  constructor(private service: ProductServiceClient,
               private aRoute: ActivatedRoute,
               private router: Router) {
     this.aRoute.params.subscribe(params =>
