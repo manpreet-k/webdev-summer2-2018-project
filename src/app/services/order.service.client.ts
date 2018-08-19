@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import {NODE} from './const-url';
 
 @Injectable()
 export class OrderServiceClient {
@@ -55,7 +56,7 @@ export class OrderServiceClient {
     })
       .then(response => response.json());
 
-  updateOrder = (orderId,newOrderStatus) => {
+  updateOrder = (orderId, newOrderStatus) => {
     return fetch(this.URL + 'api/order/' + orderId, {
       method: 'put',
       body: JSON.stringify(newOrderStatus),

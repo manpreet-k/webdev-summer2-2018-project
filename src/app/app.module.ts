@@ -61,7 +61,7 @@ export function getAuthServiceConfigs() {
     SearchBarCartComponent,
     AdminPageComponent,
     AdminSectionOrdersComponent,
-    AdminSectionProfileComponent
+    AdminSectionProfileComponent,
     SignUpComponent,
     UserPersonalInfoComponent,
     OrderListComponent,
