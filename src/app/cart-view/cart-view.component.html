@@ -1,1 +1,30 @@
-<h1>Cart View </h1>
+<div class="container-fluid">
+    <h1>Shopping Cart</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Seller</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let listing of user?.shoppingCart">
+                <td>{{listing.product.name}}</td>
+                <td>{{listing.retailer.username}}</td>
+                <td>${{listing.price}}</td>
+                <td>
+                        <input type="number" [(ngModel)]='listing.count' step=1 min=0>
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <th></th>
+                <th>Total&nbsp;Price:</th>
+                <th>${{getTotalPrice() | number : '1.2-2'}}</th>
+            </tr>
+        </tbody>
+    </table>
+    <button (click)="placeOrder()" class="btn btn-primary float-right">Place Order</button>
+</div>
