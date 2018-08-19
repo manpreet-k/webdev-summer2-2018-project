@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+
 import { InventoryServiceClient } from '../services/inventory.service.client';
 import { ProductServiceClient } from '../services/product.service.client';
 
@@ -13,6 +14,7 @@ export class ProductViewerComponent implements OnInit {
   product;
   inventories;
   listings;
+  selectedListing;
 
   constructor(private productService: ProductServiceClient,
     private inventoryService: InventoryServiceClient,
@@ -43,8 +45,9 @@ export class ProductViewerComponent implements OnInit {
     return listings;
   }
 
-  buyProduct(listing) {
-
+  selectListing(listing) {
+    this.selectedListing = listing;
+    console.log(this.selectedListing);
   }
 
 }
