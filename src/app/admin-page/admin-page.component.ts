@@ -34,7 +34,7 @@ export class AdminPageComponent implements OnInit {
       });
   }
 
-  loadUsers(){
+  loadUsers() {
     this.userService
       .findAllUsers()
       .then(users => {

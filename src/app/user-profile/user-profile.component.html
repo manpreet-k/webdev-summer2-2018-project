@@ -1,14 +1,14 @@
-<app-header [username]="user.firstName"></app-header>
+<app-header [username]="user?.firstName"></app-header>
 <div class="container-fluid">
   <div class="row wh-size">
     <div class="col-10">
     </div>
-    <button *ngIf="user.userType === 'RETAILER' && !visitor"
+    <button *ngIf="user?.userType === 'RETAILER' && !visitor"
             class="btn btn-info col-2"
             routerLink="/manage-products">
       Manage Inventory
     </button>
-    <button *ngIf="user.userType === 'PRODUCER' && !visitor"
+    <button *ngIf="user?.userType === 'PRODUCER' && !visitor"
             class="btn btn-info col-2"
             routerLink="/manage-products">
       Manage Inventory
@@ -25,19 +25,19 @@
       <ul class="nav nav-tabs">
         <li class="nav-item active">
           <a class="nav-link"
-             routerLink="/user/{{user._id}}/OPEN">
+             routerLink="/user/{{user?._id}}/OPEN">
             Open Orders
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link"
-             routerLink="/user/{{user._id}}/CANCELLED">
+             routerLink="/user/{{user?._id}}/CANCELLED">
             Canceled Orders
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link"
-             routerLink="/user/{{user._id}}/FULFILLED">
+             routerLink="/user/{{user?._id}}/FULFILLED">
             Fulfilled Orders
           </a>
         </li>
