@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {UserServiceClient} from '../services/user.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
+import { User } from '../models/user.model.client';
 
 @Component({
   selector: 'app-user-personal-info',
@@ -11,9 +12,9 @@ export class UserPersonalInfoComponent implements OnInit {
 
   @Input() userId;
 
-  user: any = {};
+  user: User;
   editMode = false;
-  tmpUser: any = {};
+  tmpUser: User;
   visitor = false;
 
   constructor(private userService: UserServiceClient,

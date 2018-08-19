@@ -1,6 +1,7 @@
  import { Component, OnInit } from '@angular/core';
  import {ActivatedRoute, Router} from '@angular/router';
  import {ProductServiceClient} from '../services/product.service.client';
+import { Product } from '../models/product.model.client';
 
 @Component({
   selector: 'app-product-details',
@@ -9,7 +10,7 @@
 })
 export class ProductDetailsComponent implements OnInit {
 
-  product = {};
+  product: Product;
   constructor(private service: ProductServiceClient,
               private aRoute: ActivatedRoute,
               private router: Router) {

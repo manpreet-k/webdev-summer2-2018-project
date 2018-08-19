@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserServiceClient} from '../services/user.service.client';
 import {InventoryServiceClient} from '../services/inventory.service.client';
+import { Product } from '../models/product.model.client';
+import { User } from '../models/user.model.client';
+import { Inventory } from '../models/inventory.model.client';
 
 @Component({
   selector: 'app-manage-products',
@@ -11,9 +14,9 @@ import {InventoryServiceClient} from '../services/inventory.service.client';
 export class ManageProductsComponent implements OnInit {
 
   username = 'XYZ';
-  listedProducts;
-  user;
-  inventory;
+  listedProducts: Product[];
+  user: User;
+  inventory: Inventory;
 
   constructor(private service: InventoryServiceClient,
               private userService: UserServiceClient,

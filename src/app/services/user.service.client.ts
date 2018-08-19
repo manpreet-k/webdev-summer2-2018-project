@@ -92,4 +92,15 @@ export class UserServiceClient {
       },
     });
   }
+
+  updateShoppingCart(cart) {
+    return fetch(this.URL + 'api/cart', {
+      method: 'put',
+      credentials: 'include',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(cart)
+    });
+  }
 }
