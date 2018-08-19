@@ -27,6 +27,15 @@ export class RegisterProductsComponent implements OnInit {
   }
 
   add(product) {
+
+    if (this.user.userType === 'RETAILER') {
+      product.listedByRetailer =  true;
+      product.listedByProducer = false;
+    } else if (this.user.userType === 'PRODUCER') {
+      product.listedByRetailer =  false;
+      product.listedByProducer = true;
+    }
+
     this.inventoryService
       .findInventoryByOwner(this.user)
       .then(inventory => {
@@ -60,7 +69,7 @@ export class RegisterProductsComponent implements OnInit {
     const invProd = {
       product: product,
       price: this.price[product.ocpc],
-      availability: this.quantity[product.ocpc]
+      count: this.quantity[product.ocpc]
     };
 
     this.inventoryService
@@ -71,6 +80,7 @@ export class RegisterProductsComponent implements OnInit {
   }
 
   createProduct(product, inventExists) {
+
     this.productService
       .createProduct(product)
       .then(prod => {
@@ -90,7 +100,7 @@ export class RegisterProductsComponent implements OnInit {
     const invProd = {
       product: product,
       price: this.price[product.ocpc],
-      availability: this.quantity[product.ocpc]
+      count: this.quantity[product.ocpc]
     };
 
     const inv = {

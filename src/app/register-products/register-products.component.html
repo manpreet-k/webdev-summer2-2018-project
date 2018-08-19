@@ -1,4 +1,4 @@
-<app-header [username]="user.firstName"></app-header>
+<app-header [username]="user?user.firstName:''"></app-header>
 <div class="container-fluid">
   <div class="row">
     <a routerLink="/manage-products" class="fa fa-2x fa-arrow-left col-1"></a>
