@@ -1,0 +1,104 @@
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10">
+        <h2  *ngIf="profileNotSelect" class="loginHeader"> Create Profile </h2>
+        <h2  *ngIf="!profileNotSelect" class="loginHeader"> Edit Profile </h2>
+        <div style="text-align: right">
+          <a *ngIf="!profileNotSelect" class="-align-left" routerLink="/admin/{{username}}/orders">View Orders</a>
+          <a *ngIf="!profileNotSelect" class="btn btn-success" (click)="update()"><i class="fa fa-check " aria-hidden="true"></i>&nbsp;</a>
+          <a *ngIf="profileNotSelect" class="btn btn-success" (click)="create()"><i class="fa fa-plus " aria-hidden="true"></i>&nbsp;</a>
+          <a *ngIf="!profileNotSelect" class="btn btn-danger" (click)="delete()"><i class="fa fa-times " aria-hidden="true"></i>&nbsp;</a>
+        </div>
+
+        <!--<div>-->
+          <!--<label for="username" class="fields">Username</label>-->
+          <!--<input [(ngModel)]="user.username" placeholder="Username" id="name" name="name" #name="ngModel" class="form-control "-->
+                 <!--required/>-->
+        <!--</div>-->
+        <!--<div *ngIf="name.invalid" class="alert alert-danger">-->
+
+          <!--<div *ngIf="name.errors.required">-->
+            <!--Username is required.-->
+          <!--</div>-->
+
+        <!--</div>-->
+
+        <div>
+          <label for="firstName" class="fields">Firstname</label>
+          <input [(ngModel)]="user['firstName']" placeholder="First Name" id="fname" name="fname" #fname="ngModel" required class="form-control " />
+        </div>
+        <div *ngIf="fname.invalid" class="alert alert-danger">
+          <div *ngIf="fname.errors.required">
+            Firstname is required.
+          </div>
+
+        </div>
+        <div>
+          <label for="lastName" class="fields">LastName</label>
+          <input [(ngModel)]="user['lastName']" placeholder="Last Name" id="lname" name="lname" #lname="ngModel" required class="form-control " />
+          <div *ngIf="lname.invalid" class="alert alert-danger">
+            <div *ngIf="lname.errors.required">
+              Lastname is required.
+            </div>
+
+          </div>
+        </div>
+        <div>
+          <label for="pass" class="fields">Password</label>
+          <input [(ngModel)]="user['password']" placeholder="*****" id="pass" name="pass" #pass="ngModel" required class="form-control " />
+
+        </div>
+        <div *ngIf="pass.invalid" class="alert alert-danger">
+          <div *ngIf="pass.errors.required">
+            Password is required.
+          </div>
+
+        </div>
+        <div>
+          <label for="email" class="fields">Email</label>
+          <input [(ngModel)]="user['email']" placeholder="email@abc.com" id="emails" name="emails" #emails="ngModel" required class="form-control " />
+
+        </div>
+        <div *ngIf="emails.invalid" class="alert alert-danger">
+          <div *ngIf="emails.errors.required">
+            Email is required.
+          </div>
+
+        </div>
+
+        <div>
+          <label for="Role" class="fields">Role:</label>
+          <label>
+            <input type="radio"  value="BUYER"  [(ngModel)] = "user['userType']">
+            Buyer
+          </label>
+          &nbsp;
+          <label>
+            <input type="radio" value="PRODUCER"  [(ngModel)] = "user['userType']">
+            Producer
+          </label>
+          &nbsp;
+          <label>
+            <input type="radio" value="RETAILER" [(ngModel)] = "user['userType']">
+            Retailer
+          </label>
+        </div>
+        <div *ngIf="emails.invalid" class="alert alert-danger">
+          <div *ngIf="emails.errors.required">
+           Role is required.
+          </div>
+
+        </div>
+
+        <p></p>
+        <div>
+          <button *ngIf="!profileNotSelect" (click)="update()" class="btn btn-lg btn-primary btn-block">
+            <i class="fa fa-check wbdv-update"></i>&nbsp;Update
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+

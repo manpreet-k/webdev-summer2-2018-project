@@ -14,7 +14,6 @@ import {
 import {OtreebaProductsServiceClient} from './services/otreeba-products.service.client';
 import { CartViewComponent } from './cart-view/cart-view.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import {ProducerProductsServiceClient} from './services/producer-products.service.client';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { HeaderComponent } from './header/header.component';
 import { RegisterProductsComponent } from './register-products/register-products.component';
@@ -23,12 +22,16 @@ import { EditProductComponent } from './edit-product/edit-product.component';
 import {UserServiceClient} from './services/user.service.client';
 import { SearchBarCartComponent } from './search-bar-cart/search-bar-cart.component';
 import {FormsModule} from '@angular/forms';
+import { AdminPageComponent } from './admin-page/admin-page.component';
+import { AdminSectionOrdersComponent } from './admin-section-orders/admin-section-orders.component';
+import { AdminSectionProfileComponent } from './admin-section-profile/admin-section-profile.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { UserPersonalInfoComponent } from './user-personal-info/user-personal-info.component';
 import { OrderListComponent } from './order-list/order-list.component';
 import { ProductViewerComponent } from './product-viewer/product-viewer.component';
 import { InventoryServiceClient } from './services/inventory.service.client';
 import { ProductServiceClient } from './services/product.service.client';
+import {OrderServiceClient} from './services/order.service.client';
 
 // Configs
 export function getAuthServiceConfigs() {
@@ -56,6 +59,9 @@ export function getAuthServiceConfigs() {
     ManageProductsComponent,
     EditProductComponent,
     SearchBarCartComponent,
+    AdminPageComponent,
+    AdminSectionOrdersComponent,
+    AdminSectionProfileComponent,
     SignUpComponent,
     UserPersonalInfoComponent,
     OrderListComponent,
@@ -73,10 +79,10 @@ export function getAuthServiceConfigs() {
       provide: AuthServiceConfig,
       useFactory: getAuthServiceConfigs
     },
-    ProducerProductsServiceClient,
     UserServiceClient,
     InventoryServiceClient,
-    ProductServiceClient
+    ProductServiceClient,
+    OrderServiceClient
   ],
   bootstrap: [AppComponent]
 })

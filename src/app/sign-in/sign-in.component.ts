@@ -61,7 +61,9 @@ export class SignInComponent implements OnInit {
         if (loggedIn !== null) {
           if (loggedIn.userType === 'BUYER') {
             this.router.navigate(['home']);
-          } else {
+          }else if (loggedIn.userType === 'ADMIN') {
+            this.router.navigate(['admin']);
+          }else {
             this.router.navigate(['profile/' + loggedIn._id]);
           }
         } else {

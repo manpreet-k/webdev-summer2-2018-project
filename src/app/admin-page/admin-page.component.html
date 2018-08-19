@@ -1,0 +1,37 @@
+<app-header [username]="username"></app-header>
+<h3 class="container-fluid text-center">
+  Admin
+</h3>
+<div class="row">
+  <div class="col-4">
+    <ul class="list-group">
+      <li class="list-group-item active">Buyers</li>
+      <div  *ngFor="let user of users" >
+        <li *ngIf="user.userType == 'BUYER'"
+           class="list-group-item wbdv"> <!-- CSS Class-->
+
+          <a  routerLink="/admin/profile/{{user.username}}">
+            {{user.firstName}}</a>
+         </li>
+      </div>
+
+      <li class="list-group-item active">Producer/Retailer</li>
+
+      <div  *ngFor="let user of users" >
+        <li *ngIf="user.userType !== 'BUYER'"
+            class="list-group-item wbdv"> <!-- CSS Class-->
+
+          <a  routerLink="/admin/profile/{{user.username}}">
+            {{user.firstName}}</a>
+        </li>
+      </div>
+
+    </ul>
+  </div>
+  <div class="col-8">
+    <app-admin-section-profile></app-admin-section-profile>
+  </div>
+
+
+
+</div>
