@@ -14,7 +14,7 @@ export class OrderServiceClient {
       },
       body: JSON.stringify(order)
     })
-      .then(response => response.json());
+      .then(response => response.json())
 
   findOrderById = (orderId) =>
     fetch(this.URL + 'api/order/' + orderId, {
@@ -24,7 +24,7 @@ export class OrderServiceClient {
         'content-type': 'application/json'
       }
     })
-      .then(response => response.json());
+      .then(response => response.json())
 
   findAllOrders = () =>
     fetch(this.URL + 'api/order', {
@@ -34,7 +34,7 @@ export class OrderServiceClient {
         'content-type': 'application/json'
       }
     })
-      .then(response => response.json());
+      .then(response => response.json())
 
   findOrderByUser = (userId) =>
     fetch(this.URL + 'api/order/from/' + userId, {
@@ -44,7 +44,7 @@ export class OrderServiceClient {
         'content-type': 'application/json'
       }
     })
-      .then(response => response.json());
+      .then(response => response.json())
 
   findOrderToUser = (userId) =>
     fetch(this.URL + 'api/order/To/' + userId, {
@@ -54,7 +54,7 @@ export class OrderServiceClient {
         'content-type': 'application/json'
       }
     })
-      .then(response => response.json());
+      .then(response => response.json())
 
   updateOrder = (orderId, newOrderStatus) => {
     return fetch(this.URL + 'api/order/' + orderId, {

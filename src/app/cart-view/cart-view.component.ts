@@ -52,7 +52,7 @@ export class CartViewComponent implements OnInit {
         requester: this.user._id,
         receiver: listing.retailer._id,
         items: [{
-          product: listing.product,
+          product: listing.product._id,
           count: listing.count,
           pricePerUnit: listing.price
         }],

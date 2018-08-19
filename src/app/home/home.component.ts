@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
               private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.productService.findAllActiveProducts()
+    this.productService.findListedByRetailer()
       .then(products => this.products = products);
     this.userService
       .currentUser()
