@@ -1,0 +1,38 @@
+  {{orderType}} orders : {{orders.length}}
+<ul class="list-group">
+  <li *ngFor="let order of orders" class="list-group-item">
+    <table class="table table-borderless order-item-header">
+      <tr>
+        <th>Order Date</th>
+        <th>Ship To</th>
+        <th>Order #</th>
+      </tr>
+      <tr>
+        <td>{{order.createdDate}}</td>
+        <td>{{user.firstName}} {{user.lastName}}</td>
+        <td>{{order._id}}</td>
+      </tr>
+    </table>
+    <div *ngFor="let item of order.items" class="row">
+      <img class="col-3 wh-img" src={{item.product.image}}/>
+      <div class="col-9">
+        <div>
+          <a routerLink="/product/{{item.product._id}}">{{item.product.name}}</a>
+        </div>
+        <div *ngIf="userType === 'BUYER'">
+          Seller <a routerLink="/profile/{{order.receiver._id}}">{{order.receiver.firstName}} {{order.receiver.lastName}}</a>
+        </div>
+        <div *ngIf="userType === 'RETAILER'">
+          Seller <a routerLink="/profile/{{order.requester._id}}">{{order.requester.firstName}} {{order.requester.lastName}}</a>
+        </div>
+        <div>
+          Count = {{item.count}}
+        </div>
+        <div>
+          Price = {{item.pricePerUnit}}
+        </div>
+      </div>
+    </div>
+
+  </li>
+</ul>

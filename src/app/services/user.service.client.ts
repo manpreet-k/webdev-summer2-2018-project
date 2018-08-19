@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
+import { NODE } from './const-url';
 
 @Injectable()
 export class UserServiceClient {
-  URL = 'http://localhost:4000/';
+  URL = NODE + '/';
 
   login = (user) =>
     fetch(this.URL + 'api/login', {
@@ -18,7 +19,8 @@ export class UserServiceClient {
   currentUser = () =>
     fetch(this.URL + 'api/profile', {
       credentials: 'include'
-    }).then(response => response.json(), response => response.send([200]))
+    }).then(response => response.text())
+      .then(text => (text ? JSON.parse(text) : null))
 
   register = (user) =>
     fetch(this.URL + 'api/register', {

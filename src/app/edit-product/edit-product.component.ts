@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ProducerProductsServiceClient} from '../services/producer-products.service.client';
 import {UserServiceClient} from '../services/user.service.client';
+import {InventoryServiceClient} from '../services/inventory.service.client';
 
 @Component({
   selector: 'app-edit-product',
@@ -10,10 +10,15 @@ import {UserServiceClient} from '../services/user.service.client';
 })
 export class EditProductComponent implements OnInit {
 
-  user;
+  availability;
+  price;
+  user: any = {};
   username;
+  productId;
   product: any = {};
-  constructor(private service: ProducerProductsServiceClient,
+  inventoryId;
+
+  constructor(private service: InventoryServiceClient,
               private userService: UserServiceClient,
               private aRoute: ActivatedRoute,
               private router: Router) {
@@ -22,28 +27,12 @@ export class EditProductComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-  submit() {
-    this.service
-      .updateProduct(this.product)
-      .then(res => {
-        this.router.navigate(['/manage-products']);
-      });
-  }
-
-  loadProduct(productId) {
     this.userService
       .currentUser()
       .then(user => {
         if (user !== null) {
           this.user = user;
           this.username = user.firstName;
-          this.service
-            .findProductById(productId)
-            .then(product => {
-              this.product = product[0];
-            });
         } else {
           alert('Session expired');
           this.router.navigate(['/home']);
@@ -51,4 +40,31 @@ export class EditProductComponent implements OnInit {
       });
   }
 
+  submit() {
+    const item = {
+      product: this.product,
+      price: this.price,
+      availability: this.availability
+    };
+    this.service
+      .updateInventoryProduct(this.inventoryId, this.productId, item)
+      .then(res => {
+        this.router.navigate(['/manage-products']);
+      });
+  }
+
+  loadProduct(productId) {
+    this.productId = productId;
+    this.service
+      .findProductInInventory(productId)
+      .then(product => {
+        this.inventoryId = product[0]._id;
+        const item = product[0].items.filter(obj => {
+          return obj._id === productId;
+        });
+        this.product = item[0].product;
+        this.availability = item[0].availability;
+        this.price = item[0].price;
+      });
+  }
 }

@@ -1,0 +1,225 @@
+<div class="container-fluid" *ngIf="editMode">
+  <div class="form-group row">
+    <label for="firstname"
+           class="col-sm-2 col-form-label">
+      First Name
+    </label>
+    <div class="col-sm-10">
+      <input class="form-control"
+             id="firstname"
+             placeholder="Alice"
+             [(ngModel)] ="user['firstName']">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="lastname"
+           class="col-sm-2 col-form-label">
+      Last Name
+    </label>
+    <div class="col-sm-10">
+      <input class="form-control"
+             id="lastname"
+             placeholder="Woderland"
+             [(ngModel)] = "user['lastName']">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="phone"
+           class="col-sm-2 col-form-label">
+      Phone Number
+    </label>
+    <div class="col-sm-10">
+      <input class="form-control"
+             id="phone"
+             placeholder="(345) 352 4556"
+             [(ngModel)] = "user['phone']">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="street"
+           class="col-sm-2 col-form-label">
+      Street, Apartment #
+    </label>
+    <div class="col-sm-10">
+      <input class="form-control"
+             id="street"
+             placeholder="Some street, #2"
+             [(ngModel)] = "user['street']">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="city"
+           class="col-sm-2 col-form-label">
+      City
+    </label>
+    <div class="col-sm-10">
+      <input class="form-control"
+             id="city"
+             placeholder="Boston"
+             [(ngModel)] = "user['city']">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="zip"
+           class="col-sm-2 col-form-label">
+      Zip Code
+    </label>
+    <div class="col-sm-10">
+      <input class="form-control"
+             id="zip"
+             placeholder="02115"
+             [(ngModel)] = "user['zip']">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="state"
+           class="col-sm-2 col-form-label">
+      State
+    </label>
+    <div class="col-sm-10">
+      <input class="form-control"
+             id="state"
+             placeholder="MA"
+             [(ngModel)] = "user['state']">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="email"
+           class="col-sm-2 col-form-label">
+      Email </label>
+    <div class="col-sm-10">
+      <input class="form-control"
+             id="email"
+             placeholder="Alice@domain.com"
+             [(ngModel)] = "user['email']">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="password"
+           class="col-sm-2 col-form-label">
+      Password
+    </label>
+    <div class="col-sm-10">
+      <input type="password"
+             class="form-control"
+             id="password"
+             placeholder="123qwe#$%"
+             [(ngModel)] = "user['password']">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label"></label>
+    <div class="col-sm-10">
+        <button (click)="update()"
+                class="btn btn-primary btn-block">
+          Update
+        </button>
+      <button (click)="cancelEdit()"
+              class="btn btn-primary btn-block">
+        Cancel
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid" *ngIf="!editMode">
+  <div class="form-group row">
+    <label class="col-11 col-form-label">
+    </label>
+    <div class="col-1">
+      <button (click)="enableEdit()"
+              class="btn btn-warning fa fa-pencil">
+      </button>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">
+      First Name
+    </label>
+    <div class="col-sm-10">
+      <input class="form-control"
+             [(ngModel)] ="user['firstName']"
+             disabled>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">
+      Last Name
+    </label>
+    <div class="col-sm-10">
+      <input class="form-control"
+             [(ngModel)] = "user['lastName']"
+             disabled>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">
+      Email </label>
+    <div class="col-sm-10">
+      <input class="form-control"
+             disabled
+             [(ngModel)] = "user['email']">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">
+      Password
+    </label>
+    <div class="col-sm-10">
+      <input type="password"
+             class="form-control"
+             disabled
+             [(ngModel)] = "user['password']">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">
+      Phone Number
+    </label>
+    <div class="col-sm-10">
+      <input class="form-control"
+             disabled
+             [(ngModel)] = "user['phone']">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">
+      Street, Apartment #
+    </label>
+    <div class="col-sm-10">
+      <input class="form-control"
+             disabled
+             [(ngModel)] = "user['street']">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">
+      City
+    </label>
+    <div class="col-sm-10">
+      <input class="form-control"
+             disabled
+             [(ngModel)] = "user['city']">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">
+      Zip Code
+    </label>
+    <div class="col-sm-10">
+      <input class="form-control"
+             disabled
+             [(ngModel)] = "user['zip']">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">
+      State
+    </label>
+    <div class="col-sm-10">
+      <input class="form-control"
+             disabled
+             [(ngModel)] = "user['state']">
+    </div>
+  </div>
+</div>

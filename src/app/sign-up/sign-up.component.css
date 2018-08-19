@@ -1,16 +1,8 @@
-.wh-signin-button {
-  width:30%;
+.wh-register {
+  width:70%;
   height:auto;
   margin:0 auto;
-  text-align:center;
-  color: white;
-}
-
-.wh-login {
-  width:30%;
-  height:auto;
-  margin:0 auto;
-  text-align:center;
+  text-align:left;
 }
 
 .wh-msg-error {
@@ -20,4 +12,3 @@
   padding: 5px;
   border-radius: 5px;
 }
-

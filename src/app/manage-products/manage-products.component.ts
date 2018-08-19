@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ProducerProductsServiceClient} from '../services/producer-products.service.client';
 import {UserServiceClient} from '../services/user.service.client';
+import {InventoryServiceClient} from '../services/inventory.service.client';
 
 @Component({
   selector: 'app-manage-products',
@@ -15,7 +15,7 @@ export class ManageProductsComponent implements OnInit {
   user;
   inventory;
 
-  constructor(private service: ProducerProductsServiceClient,
+  constructor(private service: InventoryServiceClient,
               private userService: UserServiceClient,
               private aRoute: ActivatedRoute,
               private router: Router) { }
@@ -34,8 +34,10 @@ export class ManageProductsComponent implements OnInit {
           this.service
             .findAllListedProducts(user)
             .then(inv => {
-              this.inventory = inv[0];
-              this.listedProducts = inv[0].items;
+              if (inv.length > 0) {
+                this.inventory = inv[0];
+                this.listedProducts = inv[0].items;
+              }
             });
         } else {
           alert('Session expired');
@@ -44,9 +46,9 @@ export class ManageProductsComponent implements OnInit {
       });
   }
 
-  deleteProduct(product) {
+  deleteProduct(id) {
     this.service
-      .deleteProductFromInventory(this.inventory._id, product)
+      .deleteProductFromInventory(this.inventory._id, id)
       .then(res => this.loadProducts());
   }
 }

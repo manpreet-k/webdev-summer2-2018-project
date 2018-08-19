@@ -1,0 +1,51 @@
+<div class="container-fluid">
+  <a routerLink='/home' class="mx-2">
+    <i class="fas fa-2x fa-times"></i>
+  </a>
+  <h1>Listings For:</h1>
+  <h3>{{product?.name}}</h3>
+
+  <ul class="list-group">
+    <li *ngFor="let listing of listings" class="list-group-item">
+      {{listing.owner.username}} - ${{listing.item.price}} - {{listing.item.count}} in stock
+      <a routerLink='/profile/{{listing.owner._id}}' class="btn btn-success float-right">View Profile</a>
+      <button type="button" class="btn btn-primary float-right mr-2" data-toggle="modal" data-target="#buyModal" (click)="selectListing(listing)">Buy</button>
+    </li>
+  </ul>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="buyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalTitle">Buy from {{selectedListing?.owner.username}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Price</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Total Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>${{selectedListing?.item.price}}</td>
+                <td><input type="number" [(ngModel)]='buyAmount' step=1 min=0 max={{selectedListing?.item.count}}></td>
+                <td>${{selectedListing?.item.price * buyAmount | number : '1.2-2'}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" (click)="addToCart()" class="btn btn-primary">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
