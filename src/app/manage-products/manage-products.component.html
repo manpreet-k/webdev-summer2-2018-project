@@ -1,21 +1,32 @@
 <app-header [username]="username"></app-header>
-<div class="container-fluid wh-table">
+<div class="container-fluid">
   <div class="row">
-    <span class="col-11">
-      <h3>Manage Products</h3>
-    </span>
-    <span>
+      <a routerLink="/profile/{{user._id}}" class="fa fa-2x fa-arrow-left col-1"></a>
+      <h3 class="col-10 text-center">Manage Products</h3>
       <a routerLink="/add-products" class="fa fa-2x fa-plus-circle col-1"></a>
-    </span>
   </div>
-  <ul class="list-group">
-    <li *ngFor="let item of listedProducts" class="list-group-item">
-      {{item.product.name}}
-      <span class="float-right">
+  <table class="table table-bordered">
+    <tr>
+      <th>Product</th>
+      <th>Quantity</th>
+      <th>Price (USD)</th>
+      <th>&nbsp;</th>
+    </tr>
+    <tr *ngFor="let item of listedProducts">
+        <td>
+          {{item.product.name}}
+        </td>
+        <td>
+          {{item.count}}
+        </td>
+        <td>
+          {{item.price}}
+        </td>
+        <td>
           <i class="fa fa-pencil" routerLink="/edit/{{item._id}}"></i>
-        &nbsp;
+          &nbsp;
           <a class="fa fa-times" (click)="deleteProduct(item._id)"></a>
-        </span>
-    </li>
-  </ul>
+        </td>
+    </tr>
+  </table>
 </div>
