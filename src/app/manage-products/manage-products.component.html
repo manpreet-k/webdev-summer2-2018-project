@@ -1,7 +1,7 @@
 <app-header [username]="username"></app-header>
 <div class="container-fluid">
   <div class="row">
-      <a routerLink="/profile/{{user._id}}" class="fa fa-2x fa-arrow-left col-1"></a>
+      <a routerLink="/profile/{{user?user._id:''}}" class="fa fa-2x fa-arrow-left col-1"></a>
       <h3 class="col-10 text-center">Manage Products</h3>
       <a routerLink="/add-products" class="fa fa-2x fa-plus-circle col-1"></a>
   </div>
