@@ -74,7 +74,7 @@ export class OrderServiceClient {
       credentials: 'include'
     });
   }
-  
+
   findOrdersOfStatusForBuyer = (user, status) =>
     fetch(NODE + '/api/order/from/' + user._id + '/status/' + status, {
       method: 'get',
@@ -94,5 +94,17 @@ export class OrderServiceClient {
       },
     })
       .then(response => response.json())
+
+  updateOrderStatus = (id, order) => {
+    return fetch(NODE + '/api/order/' + id, {
+      method: 'put',
+      body: JSON.stringify(order),
+      credentials: 'include',
+      headers: {
+        'content-type': 'application/json'
+      },
+    })
+      .then(response => response.json());
+  }
 
 }

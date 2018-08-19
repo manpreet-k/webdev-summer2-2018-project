@@ -127,7 +127,8 @@
     <label class="col-11 col-form-label">
     </label>
     <div class="col-1">
-      <button (click)="enableEdit()"
+      <button *ngIf="!visitor"
+              (click)="enableEdit()"
               class="btn btn-warning fa fa-pencil">
       </button>
     </div>
