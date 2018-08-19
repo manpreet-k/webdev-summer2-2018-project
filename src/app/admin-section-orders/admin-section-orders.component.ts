@@ -9,7 +9,12 @@ import { UserServiceClient } from '../services/user.service.client';
 })
 export class AdminSectionOrdersComponent implements OnInit {
 
-  username = 'Visitor';
+  order: any = {};
+
+  orders: any ={};
+
+  username = 'Visitor'
+  
   constructor(private route: ActivatedRoute,
     private userService: UserServiceClient) {
     this.route.params.subscribe(params => this.loadOrders(params['username']));
