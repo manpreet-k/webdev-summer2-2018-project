@@ -1,18 +1,30 @@
 <app-header [username]="user.firstName"></app-header>
 <div class="container-fluid">
+  <div class="row">
+    <a routerLink="/manage-products" class="fa fa-2x fa-arrow-left col-1"></a>
+    <h3 class="col-10 text-center">Add Products</h3>
+  </div>
   <ul class="list-group">
     <li class="list-group-item" *ngFor="let product of products">
       {{product.name}}
       <span class="float-right">
         <input [(ngModel)]="quantity[product.ocpc]"
-               type="text"
+               type="number"
+               min="0"
                placeholder="Quantity">
+        <span class="wh-red">*</span>
         &nbsp;
         <input [(ngModel)]="price[product.ocpc]"
-               type="text"
+               type="number"
+               min="0"
                placeholder="Price in USD">
+        <span class="wh-red">*</span>
         &nbsp;
-        <button class="fa fa-plus btn-sm btn-warning" (click)="add(product)"></button>
+        <button *ngIf="quantity[product.ocpc] && price[product.ocpc]"
+                class="fa fa-plus btn-sm btn-warning" (click)="add(product)"></button>
+        <button *ngIf="!quantity[product.ocpc] || !price[product.ocpc]"
+                disabled
+                class="fa fa-plus btn-sm btn-secondary"></button>
       </span>
     </li>
   </ul>
