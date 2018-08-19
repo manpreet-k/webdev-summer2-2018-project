@@ -18,14 +18,5 @@ export class User {
         count: Number,
         price: Number
     }];
-    userType: {
-        type: String,
-        enum: [
-          'ADMIN',
-          'PRODUCER',
-          'RETAILER',
-          'BUYER'
-        ],
-        default: 'BUYER'
-    };
+    userType: String;
 }

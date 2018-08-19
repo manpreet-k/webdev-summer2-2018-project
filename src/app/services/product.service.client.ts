@@ -43,7 +43,7 @@ export class ProductServiceClient {
       .then(response => response.json())
 
   findAllProducts = () =>
-    fetch(this.URL + 'api/product/', {
+    fetch(this.URL + 'api/product/producer', {
       method: 'get',
       credentials: 'include',
       headers: {
