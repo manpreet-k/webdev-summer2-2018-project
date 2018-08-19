@@ -9,21 +9,21 @@ import {UserServiceClient} from '../services/user.service.client';
 })
 export class AdminSectionProfileComponent implements OnInit {
 
-  user ={ _id: ''
-          } ;
   username = '';
 
-  users = {email: '' ,
-  password: '',
-  firstName: '',
-  lastName: '',
-  phone: '',
-  street:'',
-  city: '',
-  state: '',
-  zip: '',
-  profileImage: '',
-  userType: ''};
+  user: any = {};
+
+  // users = {email: '' ,
+  // password: '',
+  // firstName: '',
+  // lastName: '',
+  // phone: '',
+  // street:'',
+  // city: '',
+  // state: '',
+  // zip: '',
+  // profileImage: '',
+  // userType: ''};
 
   profileNotSelect = false;
   constructor(private router: Router,
