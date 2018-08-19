@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {ProducerProductsServiceClient} from '../services/producer-products.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserServiceClient} from '../services/user.service.client';
 
@@ -13,8 +12,7 @@ export class UserProfileComponent implements OnInit {
   userId;
   user: any = {};
 
-  constructor(private service: ProducerProductsServiceClient,
-              private userService: UserServiceClient,
+  constructor(private userService: UserServiceClient,
               private aRoute: ActivatedRoute,
               private router: Router) {
     this.aRoute.params.subscribe(params => this.setUserId(params));

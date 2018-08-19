@@ -21,7 +21,7 @@ const routes: Routes = [
       { path: 'register', component: SignUpComponent },
       { path: 'cart', component: CartViewComponent },
       { path: 'home', component: HomeComponent},
-      { path: 'user/:userId/:order', component: OrderListComponent},
+      { path: 'user/:userId/:order', component: UserProfileComponent},
       { path: 'cart/:userId', component: CartViewComponent },
       { path: 'profile/:userId', component: UserProfileComponent},
       { path: 'product/:productId/details', component: ProductDetailsComponent},

@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ProducerProductsServiceClient} from '../services/producer-products.service.client';
 import {UserServiceClient} from '../services/user.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
 
@@ -13,12 +12,10 @@ export class UserPersonalInfoComponent implements OnInit {
   @Input() userId;
 
   user: any = {};
-  openOrders: any = {};
   editMode = false;
   tmpUser: any = {};
 
-  constructor(private service: ProducerProductsServiceClient,
-              private userService: UserServiceClient,
+  constructor(private userService: UserServiceClient,
               private aRoute: ActivatedRoute,
               private router: Router) {}
 

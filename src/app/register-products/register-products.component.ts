@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {OtreebaProductsServiceClient} from '../services/otreeba-products.service.client';
 import {UserServiceClient} from '../services/user.service.client';
-import {ProducerProductsServiceClient} from '../services/producer-products.service.client';
+import {InventoryServiceClient} from '../services/inventory.service.client';
+import {ProductServiceClient} from '../services/product.service.client';
 
 @Component({
   selector: 'app-register-products',
@@ -18,11 +19,12 @@ export class RegisterProductsComponent implements OnInit {
   inventory: any = {};
   constructor(private service: OtreebaProductsServiceClient,
               private userService: UserServiceClient,
-              private producerService: ProducerProductsServiceClient) {
+              private inventoryService: InventoryServiceClient,
+              private productService: ProductServiceClient) {
   }
 
   add(product) {
-    this.producerService
+    this.inventoryService
       .findInventoryByOwner(this.user)
       .then(inventory => {
         if (inventory.length > 0) {
@@ -35,7 +37,7 @@ export class RegisterProductsComponent implements OnInit {
   }
 
   changeInventory(product, inventExists) {
-    this.producerService
+    this.productService
       .findProductByOCPC(product.ocpc)
       .then(prod => {
         if (prod.length === 0) {
@@ -58,7 +60,7 @@ export class RegisterProductsComponent implements OnInit {
       availability: this.quantity[product.ocpc]
     };
 
-    this.producerService
+    this.inventoryService
       .addProductToInventory(this.inventory._id, invProd);
       // .then(res => {
       //
@@ -66,7 +68,7 @@ export class RegisterProductsComponent implements OnInit {
   }
 
   createProduct(product, inventExists) {
-    this.producerService
+    this.productService
       .createProduct(product)
       .then(prod => {
         if (prod !== null) {
@@ -93,7 +95,7 @@ export class RegisterProductsComponent implements OnInit {
       items: [invProd]
     };
 
-    this.producerService
+    this.inventoryService
       .createInventory(inv);
       // .then(res => {
       //   alert(res);
@@ -112,7 +114,7 @@ export class RegisterProductsComponent implements OnInit {
             this.service.findAllProducts()
               .then(products => this.products = products.data);
           } else {
-            this.producerService.findAllProducts()
+            this.productService.findAllProducts()
               .then(products => this.products = products);
           }
         }
