@@ -11,9 +11,10 @@ export class AdminSectionOrdersComponent implements OnInit {
 
   order: any = {};
 
-  orders: any = {};
+  orders: any ={};
 
-  username = 'Visitor';
+  username = 'Visitor'
+  
   constructor(private route: ActivatedRoute,
     private userService: UserServiceClient) {
     this.route.params.subscribe(params => this.loadOrders(params['username']));

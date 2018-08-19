@@ -10,7 +10,8 @@ import { Product } from '../models/product.model.client';
 })
 export class ProductDetailsComponent implements OnInit {
 
-  product: Product;
+  product: any = {};
+
   constructor(private service: ProductServiceClient,
               private aRoute: ActivatedRoute,
               private router: Router) {
