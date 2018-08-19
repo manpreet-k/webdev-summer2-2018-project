@@ -3,9 +3,8 @@ import {OtreebaProductsServiceClient} from '../services/otreeba-products.service
 import {UserServiceClient} from '../services/user.service.client';
 import {InventoryServiceClient} from '../services/inventory.service.client';
 import {ProductServiceClient} from '../services/product.service.client';
-import { User } from '../models/user.model.client';
-import { Inventory } from '../models/inventory.model.client';
-import { Product } from '../models/product.model.client';
+import {User} from '../models/user.model.client';
+import {Inventory} from '../models/inventory.model.client';
 
 @Component({
   selector: 'app-register-products',
@@ -14,12 +13,13 @@ import { Product } from '../models/product.model.client';
 })
 export class RegisterProductsComponent implements OnInit {
 
-  products: Product[];
+  products = [];
   loggedIn = false;
   user: User;
   quantity = {};
   price = {};
   inventory: Inventory;
+
   constructor(private service: OtreebaProductsServiceClient,
               private userService: UserServiceClient,
               private inventoryService: InventoryServiceClient,
@@ -27,25 +27,22 @@ export class RegisterProductsComponent implements OnInit {
   }
 
   add(product) {
-
     if (this.user.userType === 'RETAILER') {
-      product.listedByRetailer =  true;
+      product.listedByRetailer = true;
       product.listedByProducer = false;
     } else if (this.user.userType === 'PRODUCER') {
-      product.listedByRetailer =  false;
+      product.listedByRetailer = false;
       product.listedByProducer = true;
     }
-
-    this.inventoryService
-      .findInventoryByOwner(this.user)
-      .then(inventory => {
-        if (inventory.length > 0) {
-          this.inventory = inventory[0];
-          this.changeInventory(product, true);
-        } else {
-          this.changeInventory(product, false);
-        }
-      });
+    // this.inventoryService
+    //   .findInventoryByOwner(this.user)
+    //   .then(inventory => {
+    if (this.inventory) {
+      this.changeInventory(product, true);
+    } else {
+      this.changeInventory(product, false);
+    }
+    // });
   }
 
   changeInventory(product, inventExists) {
@@ -73,10 +70,11 @@ export class RegisterProductsComponent implements OnInit {
     };
 
     this.inventoryService
-      .addProductToInventory(this.inventory._id, invProd);
-      // .then(res => {
-      //
-      // });
+      .addProductToInventory(this.inventory._id, invProd)
+      .then(res => {
+        this.inventory.items.push(invProd);
+        this.filterExistingProducts();
+      });
   }
 
   createProduct(product, inventExists) {
@@ -109,10 +107,36 @@ export class RegisterProductsComponent implements OnInit {
     };
 
     this.inventoryService
-      .createInventory(inv);
-      // .then(res => {
-      //   alert(res);
-      // });
+      .createInventory(inv)
+      .then(res => {
+        this.inventory.items.push(invProd);
+        this.filterExistingProducts();
+      });
+  }
+
+  loadInventory() {
+    this.inventoryService
+      .findInventoryByOwner(this.user)
+      .then(inventory => {
+        if (inventory.length > 0) {
+          this.inventory = inventory[0];
+          this.filterExistingProducts();
+        }
+      });
+  }
+
+  comparer(otherArray) {
+    return function(current) {
+      return otherArray.filter(function(other) {
+        return other.product.ocpc === current.ocpc;
+      }).length === 0;
+    };
+  }
+
+  filterExistingProducts() {
+    const items = this.inventory.items;
+    const result = this.products.filter(this.comparer(items));
+    this.products = result;
   }
 
   ngOnInit() {
@@ -122,13 +146,18 @@ export class RegisterProductsComponent implements OnInit {
         if (user !== null) {
           this.loggedIn = true;
           this.user = user;
-
           if (user.userType === 'PRODUCER') {
             this.service.findAllProducts()
-              .then(products => this.products = products.data);
+              .then(products => {
+                this.products = products.data;
+                this.loadInventory();
+              });
           } else {
             this.productService.findAllProducts()
-              .then(products => this.products = products);
+              .then(products => {
+                this.products = products;
+                this.loadInventory();
+              });
           }
         }
       });
