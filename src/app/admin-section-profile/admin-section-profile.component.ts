@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Route, Router} from '@angular/router';
-import {UserServiceClient} from '../services/user.service.client';
+import { ActivatedRoute, Route, Router } from '@angular/router';
+import { UserServiceClient } from '../services/user.service.client';
+import { User } from '../models/user.model.client';
 
 @Component({
   selector: 'app-admin-section-profile',
@@ -11,7 +12,7 @@ export class AdminSectionProfileComponent implements OnInit {
 
   username = '';
 
-  user: any = {};
+  user: User;
 
   // users = {email: '' ,
   // password: '',
@@ -27,17 +28,16 @@ export class AdminSectionProfileComponent implements OnInit {
 
   profileNotSelect = false;
   constructor(private router: Router,
-              private route: ActivatedRoute,
-              private userService: UserServiceClient) {
+    private route: ActivatedRoute,
+    private userService: UserServiceClient) {
     this.route.params.subscribe(params => this.loadProfile(params['username']));
   }
 
   ngOnInit() {
   }
-  loadProfile(username){
-    if(username !== undefined)
-    {
-      this.username= username;
+  loadProfile(username) {
+    if (username !== undefined) {
+      this.username = username;
       this.userService
         .findUserByUsername(username)
         .then(user => {
@@ -48,7 +48,7 @@ export class AdminSectionProfileComponent implements OnInit {
             // this.router.navigate(['/home']);
           }
         });
-    }else {
+    } else {
       this.profileNotSelect = true;
       console.log(username);
     }
@@ -73,8 +73,9 @@ export class AdminSectionProfileComponent implements OnInit {
 
   delete() {
     this.userService.delete(this.user._id)
-      .then(() => {alert('User deleted successfully!')
-      this.router.navigate(['/admin']);
+      .then(() => {
+        alert('User deleted successfully!');
+        this.router.navigate(['/admin']);
       });
 
   }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserServiceClient} from '../services/user.service.client';
+import { User } from '../models/user.model.client';
 
 @Component({
   selector: 'app-user-profile',
@@ -10,7 +11,7 @@ import {UserServiceClient} from '../services/user.service.client';
 export class UserProfileComponent implements OnInit {
 
   userId;
-  user: any = {};
+  user: User;
   visitor = false;
 
   constructor(private userService: UserServiceClient,

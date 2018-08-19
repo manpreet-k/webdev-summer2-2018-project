@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from 'angular-6-social-login';
 import {Router} from '@angular/router';
 import {UserServiceClient} from '../services/user.service.client';
+import { User } from '../models/user.model.client';
 
 @Component({
   selector: 'app-sign-up',
@@ -10,7 +11,7 @@ import {UserServiceClient} from '../services/user.service.client';
 })
 export class SignUpComponent implements OnInit {
 
-  user: any = {};
+  user: User;
   showError;
   errorText;
   verifyPassword;
