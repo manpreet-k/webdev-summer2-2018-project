@@ -3,6 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {UserServiceClient} from '../services/user.service.client';
 import {OrderServiceClient} from '../services/order.service.client';
 
+
 @Component({
   selector: 'app-admin-section-orders',
   templateUrl: './admin-section-orders.component.html',
@@ -24,6 +25,7 @@ export class AdminSectionOrdersComponent implements OnInit {
 
   username = 'Visitor';
 
+
   constructor(private route: ActivatedRoute,
               private userService: UserServiceClient,
               private orderService: OrderServiceClient) {
@@ -33,16 +35,17 @@ export class AdminSectionOrdersComponent implements OnInit {
   ngOnInit() {
   }
 
-  loadOrders(username){
+  loadOrders(username) {
     this.username = username;
     this.orderService.findAllOrders()
       .then(orders => this.orders = orders);
     console.log('');
   }
 
-  createOrder(){
+  createOrder() {
 
   }
+
 
   updateOrder(){
     this.newOrder.requester['firstName'] = this.Requester;
@@ -54,6 +57,9 @@ export class AdminSectionOrdersComponent implements OnInit {
       .then(response => console.log(response));
 
   }
+
+ 
+
 
   editSection(order)
   {

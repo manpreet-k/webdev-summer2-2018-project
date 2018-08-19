@@ -3,6 +3,9 @@ import {OtreebaProductsServiceClient} from '../services/otreeba-products.service
 import {UserServiceClient} from '../services/user.service.client';
 import {InventoryServiceClient} from '../services/inventory.service.client';
 import {ProductServiceClient} from '../services/product.service.client';
+import { User } from '../models/user.model.client';
+import { Inventory } from '../models/inventory.model.client';
+import { Product } from '../models/product.model.client';
 
 @Component({
   selector: 'app-register-products',
@@ -11,12 +14,12 @@ import {ProductServiceClient} from '../services/product.service.client';
 })
 export class RegisterProductsComponent implements OnInit {
 
-  products = [];
+  products: Product[];
   loggedIn = false;
-  user: any = {};
+  user: User;
   quantity = {};
   price = {};
-  inventory: any = {};
+  inventory: Inventory;
   constructor(private service: OtreebaProductsServiceClient,
               private userService: UserServiceClient,
               private inventoryService: InventoryServiceClient,

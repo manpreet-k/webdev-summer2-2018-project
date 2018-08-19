@@ -2,20 +2,27 @@
 <div class="container-fluid">
   <h5>{{product.name}}</h5>
 
-  <label>Image URL</label>
+  <label class="col-form-label">Image URL</label>
   <input [(ngModel)]="product.image"
          class="form-control">
 
-  <label>Quantity available</label>
+  <label class="col-form-label">Quantity available</label>
   <input [(ngModel)]="availability"
          class="form-control">
 
-  <label>Price per piece</label>
+  <label class="col-form-label">Price per piece</label>
   <input [(ngModel)]="price"
          class="form-control">
+&nbsp;
+  <div>
+    <button class="btn btn-success" (click)="submit()">
+      Update
+    </button>
 
-  <button class="btn btn-success" (click)="submit()">
-    Update Product
-  </button>
+    &nbsp;
 
+    <button class="btn btn-secondary" (click)="cancel()">
+      Cancel
+    </button>
+  </div>
 </div>

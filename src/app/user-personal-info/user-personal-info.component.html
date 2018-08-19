@@ -8,7 +8,7 @@
       <input class="form-control"
              id="firstname"
              placeholder="Alice"
-             [(ngModel)] ="user['firstName']">
+             [(ngModel)] ="user.firstName">
     </div>
   </div>
   <div class="form-group row">
@@ -20,7 +20,7 @@
       <input class="form-control"
              id="lastname"
              placeholder="Woderland"
-             [(ngModel)] = "user['lastName']">
+             [(ngModel)] = "user.lastName">
     </div>
   </div>
   <div class="form-group row">
@@ -32,7 +32,7 @@
       <input class="form-control"
              id="phone"
              placeholder="(345) 352 4556"
-             [(ngModel)] = "user['phone']">
+             [(ngModel)] = "user.phone">
     </div>
   </div>
   <div class="form-group row">
@@ -44,7 +44,7 @@
       <input class="form-control"
              id="street"
              placeholder="Some street, #2"
-             [(ngModel)] = "user['street']">
+             [(ngModel)] = "user.street">
     </div>
   </div>
   <div class="form-group row">
@@ -56,7 +56,7 @@
       <input class="form-control"
              id="city"
              placeholder="Boston"
-             [(ngModel)] = "user['city']">
+             [(ngModel)] = "user.city">
     </div>
   </div>
   <div class="form-group row">
@@ -68,7 +68,7 @@
       <input class="form-control"
              id="zip"
              placeholder="02115"
-             [(ngModel)] = "user['zip']">
+             [(ngModel)] = "user.zip">
     </div>
   </div>
   <div class="form-group row">
@@ -80,7 +80,7 @@
       <input class="form-control"
              id="state"
              placeholder="MA"
-             [(ngModel)] = "user['state']">
+             [(ngModel)] = "user.state">
     </div>
   </div>
   <div class="form-group row">
@@ -91,7 +91,7 @@
       <input class="form-control"
              id="email"
              placeholder="Alice@domain.com"
-             [(ngModel)] = "user['email']">
+             [(ngModel)] = "user.email">
     </div>
   </div>
   <div class="form-group row">
@@ -104,7 +104,7 @@
              class="form-control"
              id="password"
              placeholder="123qwe#$%"
-             [(ngModel)] = "user['password']">
+             [(ngModel)] = "user.password">
     </div>
   </div>
   <div class="form-group row">
@@ -139,7 +139,7 @@
     </label>
     <div class="col-sm-10">
       <input class="form-control"
-             [(ngModel)] ="user['firstName']"
+             [(ngModel)] ="user.firstName"
              disabled>
     </div>
   </div>
@@ -149,7 +149,7 @@
     </label>
     <div class="col-sm-10">
       <input class="form-control"
-             [(ngModel)] = "user['lastName']"
+             [(ngModel)] = "user.lastName"
              disabled>
     </div>
   </div>
@@ -159,7 +159,7 @@
     <div class="col-sm-10">
       <input class="form-control"
              disabled
-             [(ngModel)] = "user['email']">
+             [(ngModel)] = "user.email">
     </div>
   </div>
   <div class="form-group row">
@@ -170,7 +170,7 @@
       <input type="password"
              class="form-control"
              disabled
-             [(ngModel)] = "user['password']">
+             [(ngModel)] = "user.password">
     </div>
   </div>
   <div class="form-group row">
@@ -180,7 +180,7 @@
     <div class="col-sm-10">
       <input class="form-control"
              disabled
-             [(ngModel)] = "user['phone']">
+             [(ngModel)] = "user.phone">
     </div>
   </div>
   <div class="form-group row">
@@ -190,7 +190,7 @@
     <div class="col-sm-10">
       <input class="form-control"
              disabled
-             [(ngModel)] = "user['street']">
+             [(ngModel)] = "user.street">
     </div>
   </div>
   <div class="form-group row">
@@ -200,7 +200,7 @@
     <div class="col-sm-10">
       <input class="form-control"
              disabled
-             [(ngModel)] = "user['city']">
+             [(ngModel)] = "user.city">
     </div>
   </div>
   <div class="form-group row">
@@ -210,7 +210,7 @@
     <div class="col-sm-10">
       <input class="form-control"
              disabled
-             [(ngModel)] = "user['zip']">
+             [(ngModel)] = "user.zip">
     </div>
   </div>
   <div class="form-group row">
@@ -220,7 +220,7 @@
     <div class="col-sm-10">
       <input class="form-control"
              disabled
-             [(ngModel)] = "user['state']">
+             [(ngModel)] = "user.state">
     </div>
   </div>
 </div>

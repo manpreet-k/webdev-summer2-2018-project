@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserServiceClient} from '../services/user.service.client';
 import {OrderServiceClient} from '../services/order.service.client';
+import { Order } from '../models/order.model.client';
+import { User } from '../models/user.model.client';
 
 @Component({
   selector: 'app-order-list',
@@ -12,8 +14,8 @@ export class OrderListComponent implements OnInit {
 
   userId;
   orderType;
-  user: any = {};
-  orders = [];
+  user: User;
+  orders: Order[] = [];
   total;
   userType;
 
