@@ -13,7 +13,7 @@ export class OrderListComponent implements OnInit {
   userId;
   orderType;
   user: any = {};
-  orders;
+  orders = [];
   total;
   userType;
 
@@ -30,6 +30,29 @@ export class OrderListComponent implements OnInit {
     this.loadOrders();
   }
 
+  cancelOrder(order) {
+    const status = {
+      status: 'CANCELLED'
+    };
+
+    this.service
+      .updateOrderStatus(order._id, status)
+      .then(newOrder => {
+        this.loadOrders();
+      });
+  }
+
+  fulfillOrder(order) {
+    const status = {
+      status: 'FULFILLED'
+    };
+
+    this.service
+      .updateOrderStatus(order._id, status)
+      .then(newOrder => {
+        this.loadOrders();
+      });
+  }
   loadOrders() {
     this.userService
       .currentUser()

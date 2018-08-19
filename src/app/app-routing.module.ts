@@ -31,7 +31,7 @@ const routes: Routes = [
       { path: 'admin', component: AdminPageComponent},
       { path: 'admin/profile/:username', component : AdminPageComponent},
       { path: 'admin/:username/orders', component : AdminSectionOrdersComponent},
-      { path: 'edit-product', component: EditProductComponent},
+      { path: 'edit/:productId', component: EditProductComponent},
       { path: 'product/:productId', component: ProductViewerComponent },
       { path: '**', component: HomeComponent} // last
     ]

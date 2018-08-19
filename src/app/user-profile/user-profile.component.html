@@ -3,12 +3,12 @@
   <div class="row wh-size">
     <div class="col-10">
     </div>
-    <button *ngIf="user.userType === 'RETAILER'"
+    <button *ngIf="user.userType === 'RETAILER' && !visitor"
             class="btn btn-info col-2"
             routerLink="/manage-products">
       Manage Inventory
     </button>
-    <button *ngIf="user.userType === 'PRODUCER'"
+    <button *ngIf="user.userType === 'PRODUCER' && !visitor"
             class="btn btn-info col-2"
             routerLink="/manage-products">
       Manage Inventory
@@ -19,7 +19,8 @@
       <h5>Personal Information</h5>
       <app-user-personal-info [userId]="userId"></app-user-personal-info>
     </div>
-    <div class="col-6">
+    <div class="col-6"
+         *ngIf="!visitor">
       <h5>Order Information</h5>
       <ul class="nav nav-tabs">
         <li class="nav-item active">

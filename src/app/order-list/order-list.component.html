@@ -6,11 +6,19 @@
         <th>Order Date</th>
         <th>Ship To</th>
         <th>Order #</th>
+        <th *ngIf="userType === 'BUYER' && orderType === 'OPEN'">&nbsp;</th>
+        <th *ngIf="userType === 'RETAILER' && orderType === 'OPEN'">&nbsp;</th>
       </tr>
       <tr>
         <td>{{order.createdDate}}</td>
         <td>{{user.firstName}} {{user.lastName}}</td>
         <td>{{order._id}}</td>
+        <td *ngIf="userType === 'BUYER' && orderType === 'OPEN'">
+          <button class="btn btn-secondary" (click)="cancelOrder(order)">Cancel Order</button>
+        </td>
+        <td *ngIf="userType === 'RETAILER' && orderType === 'OPEN'">
+          <button class="btn btn-secondary" (click)="fulfillOrder(order)">Fulfill Order</button>
+        </td>
       </tr>
     </table>
     <div *ngFor="let item of order.items" class="row">

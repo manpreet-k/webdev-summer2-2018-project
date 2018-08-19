@@ -11,6 +11,7 @@ export class UserProfileComponent implements OnInit {
 
   userId;
   user: any = {};
+  visitor = false;
 
   constructor(private userService: UserServiceClient,
               private aRoute: ActivatedRoute,
@@ -28,6 +29,7 @@ export class UserProfileComponent implements OnInit {
       .then (user => {
         if (user !== null) {
           this.user = user;
+          this.visitor = user._id !== this.userId;
         } else {
           alert('Session Expired');
           this.router.navigate(['/home']);
