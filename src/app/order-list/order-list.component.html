@@ -10,7 +10,7 @@
         <th *ngIf="userType === 'RETAILER' && orderType === 'OPEN'">&nbsp;</th>
       </tr>
       <tr>
-        <td>{{order.createdDate}}</td>
+        <td>{{convertDate(order.createdAt)}}</td>
         <td>{{user.firstName}} {{user.lastName}}</td>
         <td>{{order._id}}</td>
         <td *ngIf="userType === 'BUYER' && orderType === 'OPEN'">

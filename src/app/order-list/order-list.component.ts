@@ -42,6 +42,10 @@ export class OrderListComponent implements OnInit {
       });
   }
 
+  convertDate(date) {
+    return new Date(date).toDateString();
+  }
+
   fulfillOrder(order) {
     const status = {
       status: 'FULFILLED'
