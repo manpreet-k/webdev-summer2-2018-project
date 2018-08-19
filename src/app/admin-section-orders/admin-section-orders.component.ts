@@ -21,4 +21,12 @@ export class AdminSectionOrdersComponent implements OnInit {
   loadOrders(username){
     this.username = username;
   }
+
+  createOrder(){
+
+  }
+
+  updateOrder(){
+
+  }
 }

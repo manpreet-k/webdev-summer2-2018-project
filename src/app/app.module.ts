@@ -26,6 +26,7 @@ import {FormsModule} from '@angular/forms';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AdminSectionOrdersComponent } from './admin-section-orders/admin-section-orders.component';
 import { AdminSectionProfileComponent } from './admin-section-profile/admin-section-profile.component';
+import {OrderServiceClient} from './services/order.service.client';
 
 // Configs
 export function getAuthServiceConfigs() {
@@ -70,7 +71,8 @@ export function getAuthServiceConfigs() {
       useFactory: getAuthServiceConfigs
     },
     ProducerProductsServiceClient,
-    UserServiceClient
+    UserServiceClient,
+    OrderServiceClient
   ],
   bootstrap: [AppComponent]
 })

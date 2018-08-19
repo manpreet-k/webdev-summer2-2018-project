@@ -1,0 +1,77 @@
+import {Injectable} from '@angular/core';
+
+@Injectable()
+export class OrderServiceClient {
+  URL = 'http://localhost:4000/';
+
+  createOrder = (order) =>
+    fetch(this.URL + 'api/order', {
+      method: 'post',
+      credentials: 'include',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(order)
+    })
+      .then(response => response.json());
+
+  findOrderById = (orderId) =>
+    fetch(this.URL + 'api/order/' + orderId, {
+      method: 'get',
+      credentials: 'include',
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+      .then(response => response.json());
+
+  findAllOrders = () =>
+    fetch(this.URL + 'api/order', {
+      method: 'get',
+      credentials: 'include',
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+      .then(response => response.json());
+
+  findOrderByUser = (userId) =>
+    fetch(this.URL + 'api/order/from/' + userId, {
+      method: 'get',
+      credentials: 'include',
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+      .then(response => response.json());
+
+  findOrderToUser = (userId) =>
+    fetch(this.URL + 'api/order/To/' + userId, {
+      method: 'get',
+      credentials: 'include',
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+      .then(response => response.json());
+
+  updateOrder = (orderId,newOrderStatus) => {
+    return fetch(this.URL + 'api/order/' + orderId, {
+      method: 'put',
+      body: JSON.stringify(newOrderStatus),
+      credentials: 'include',
+      headers: {
+        'content-type': 'application/json'
+      },
+    })
+      .then(response => response.json());
+  }
+
+  deleteOrder(orderId) {
+    return fetch(this.URL + 'api/order/' + orderId, {
+      method: 'delete',
+      credentials: 'include'
+    });
+  }
+
+}

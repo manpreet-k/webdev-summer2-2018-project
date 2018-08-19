@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Route, Router} from '@angular/router';
 import {UserServiceClient} from '../services/user.service.client';
 
 @Component({
@@ -9,10 +9,25 @@ import {UserServiceClient} from '../services/user.service.client';
 })
 export class AdminSectionProfileComponent implements OnInit {
 
-  user = '';
+  user ={ _id: ''
+          } ;
   username = '';
+
+  users = {email: '' ,
+  password: '',
+  firstName: '',
+  lastName: '',
+  phone: '',
+  street:'',
+  city: '',
+  state: '',
+  zip: '',
+  profileImage: '',
+  userType: ''};
+
   profileNotSelect = false;
-  constructor(private route: ActivatedRoute,
+  constructor(private router: Router,
+              private route: ActivatedRoute,
               private userService: UserServiceClient) {
     this.route.params.subscribe(params => this.loadProfile(params['username']));
   }
@@ -39,12 +54,29 @@ export class AdminSectionProfileComponent implements OnInit {
     }
 
   }
+
+  create() {
+    alert(this.user);
+    this.userService.register(this.user)
+      .then(res => this.router.navigate(['/admin']));
+  }
+
   update() {
     // this.user.username = this.username;
     // this.user.firstName = this.firstName;
     // this.user.lastName = this.lastName;
     // this.user.email = this.email;
-    this.userService.update(this.user).then(user => this.user = user).then((() => alert('Details updated successfully!')));
+    this.userService.update(this.user)
+      .then(user => this.user = user)
+      .then((() => alert('Details updated successfully!')));
+  }
+
+  delete() {
+    this.userService.delete(this.user._id)
+      .then(() => {alert('User deleted successfully!')
+      this.router.navigate(['/admin']);
+      });
+
   }
 
 }

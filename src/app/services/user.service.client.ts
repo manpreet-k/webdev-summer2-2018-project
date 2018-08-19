@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 
 @Injectable()
 export class UserServiceClient {
-  URL = 'http://localhost:3000/';
+  URL = 'http://localhost:4000/';
 
   login = (user) =>
     fetch(this.URL + 'api/login', {
@@ -32,7 +32,7 @@ export class UserServiceClient {
       .then(response => response.json())
 
   findUserByUsername = (username) =>
-    fetch(this.URL + 'api/user/' + username, {
+    fetch(this.URL + 'api/register/' + username, {
       method: 'get',
       credentials: 'include',
       headers: {
@@ -75,6 +75,12 @@ export class UserServiceClient {
       .then(response => response.json());
   }
 
+  delete(userId) {
+    return fetch(this.URL + 'api/profile/' + userId, {
+      method: 'delete',
+      credentials: 'include'
+    });
+  }
   logout = () => {
     return fetch(this.URL + 'api/logout', {
       method: 'post',
