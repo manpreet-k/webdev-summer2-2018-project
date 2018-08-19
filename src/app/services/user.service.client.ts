@@ -16,6 +16,11 @@ export class UserServiceClient {
     })
       .then(response => response.json())
 
+  findUserById(userId) {
+    return fetch(this.URL + 'api/user/' + userId)
+      .then(response => response.json());
+  }
+
   currentUser = () =>
     fetch(this.URL + 'api/profile', {
       credentials: 'include'
