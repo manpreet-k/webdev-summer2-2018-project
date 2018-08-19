@@ -72,9 +72,6 @@ export class OrderListComponent implements OnInit {
                 this.orders = orders;
               });
           }
-        } else {
-          alert('Session Expired');
-          this.router.navigate(['/home']);
         }
       });
   }

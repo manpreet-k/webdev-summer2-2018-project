@@ -1,4 +1,6 @@
-<app-header [username]="user?.firstName"></app-header>
+<app-header *ngIf="!visitor"
+            [username]="user?.firstName"></app-header>
+<app-header *ngIf="visitor"></app-header>
 <div class="container-fluid">
   <div class="row wh-size">
     <div class="col-10">
@@ -17,7 +19,7 @@
   <div class="row">
     <div class="col-6">
       <h5>Personal Information</h5>
-      <app-user-personal-info [userId]="userId"></app-user-personal-info>
+      <app-user-personal-info [userId]="userId" [visitor]="visitor"></app-user-personal-info>
     </div>
     <div class="col-6"
          *ngIf="!visitor">

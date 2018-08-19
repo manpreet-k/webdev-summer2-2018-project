@@ -5,7 +5,14 @@
   <div class="card-deck">
     <div *ngFor="let product of products" class="col-sm-3">
       <div class="card wbdv-card-size">
-        <a routerLink='/product/{{product._id}}'>
+        <a *ngIf="user" routerLink='/product/{{product._id}}'>
+          <div class="card-body">
+            <img class="wbdv-img-size" src={{product.image}} alt="Image">
+            <h5 class="card-title">{{product.name}}</h5>
+            <h6>{{product.brand.name}}</h6>
+          </div>
+        </a>
+        <a *ngIf="!user" routerLink='/product/{{product._id}}/details'>
           <div class="card-body">
             <img class="wbdv-img-size" src={{product.image}} alt="Image">
             <h5 class="card-title">{{product.name}}</h5>
