@@ -9,6 +9,10 @@ import { UserServiceClient } from '../services/user.service.client';
 })
 export class AdminSectionOrdersComponent implements OnInit {
 
+  order: any = {};
+
+  orders: any = {};
+
   username = 'Visitor';
   constructor(private route: ActivatedRoute,
     private userService: UserServiceClient) {
