@@ -11,11 +11,11 @@ import { User } from '../models/user.model.client';
 export class UserPersonalInfoComponent implements OnInit {
 
   @Input() userId;
+  @Input() visitor;
 
   user: User = new User();
   editMode = false;
   tmpUser: User;
-  visitor = false;
 
   constructor(private userService: UserServiceClient,
               private aRoute: ActivatedRoute,
@@ -42,14 +42,10 @@ export class UserPersonalInfoComponent implements OnInit {
 
   ngOnInit() {
     this.userService
-      .currentUser()
+      .findUserById(this.userId)
       .then (user => {
         if (user !== null) {
           this.user = user;
-          this.visitor = user._id !== this.userId;
-        } else {
-          alert('Session Expired');
-          this.router.navigate(['/home']);
         }
       });
   }

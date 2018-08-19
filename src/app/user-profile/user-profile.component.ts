@@ -32,8 +32,12 @@ export class UserProfileComponent implements OnInit {
           this.user = user;
           this.visitor = user._id !== this.userId;
         } else {
-          alert('Session Expired');
-          this.router.navigate(['/home']);
+          this.userService
+            .findUserById(this.userId)
+            .then(user1 => {
+              this.user = user1;
+              this.visitor = true;
+            });
         }
       });
   }

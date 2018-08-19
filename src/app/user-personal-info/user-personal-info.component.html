@@ -94,7 +94,7 @@
              [(ngModel)] = "user.email">
     </div>
   </div>
-  <div class="form-group row">
+  <div *ngIf="!visitor" class="form-group row">
     <label for="password"
            class="col-sm-2 col-form-label">
       Password
@@ -162,7 +162,7 @@
              [(ngModel)] = "user.email">
     </div>
   </div>
-  <div class="form-group row">
+  <div *ngIf="!visitor" class="form-group row">
     <label class="col-sm-2 col-form-label">
       Password
     </label>

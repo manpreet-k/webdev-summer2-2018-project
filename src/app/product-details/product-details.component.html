@@ -2,12 +2,22 @@
 <div class="container-fluid">
   <div class="row">
   <h3 class="col-6">{{product.name}}</h3>
-  <h5 class="col-6">In Stock : {{product.availableStock}}</h5>
   </div>
-  <div class="table table-striped row">
-    <img class="col-6"
+  <div class="row">
+    <img class="col-4"
          src="{{product.image}}">
-    <table class="col-6">
+    <table class="col-3" title="Sellers">
+      <tr *ngFor="let listing of listings" class="list-group-item">
+        <td>
+          <a routerLink='/profile/{{listing.owner._id}}'>
+            {{listing.owner.firstName}} {{listing.owner.lastName}}
+          </a>
+        </td>
+        <td>${{listing.item.price}}</td>
+        <td>{{listing.item.count}} in stock</td>
+      </tr>
+    </table>
+    <table class="table table-striped  col-5">
       <tr>
         <td>ocpc</td>
         <td>{{product.ocpc}}</td>
