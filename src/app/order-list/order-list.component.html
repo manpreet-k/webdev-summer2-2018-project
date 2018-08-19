@@ -11,7 +11,8 @@
       </tr>
       <tr>
         <td>{{convertDate(order.createdAt)}}</td>
-        <td>{{user.firstName}} {{user.lastName}}</td>
+        <td *ngIf="userType === 'BUYER'">{{user.firstName}} {{user.lastName}}</td>
+        <td *ngIf="userType === 'RETAILER'">{{order.requester.firstName}} {{order.requester.lastName}}</td>
         <td>{{order._id}}</td>
         <td *ngIf="userType === 'BUYER' && orderType === 'OPEN'">
           <button class="btn btn-secondary" (click)="cancelOrder(order)">Cancel Order</button>
@@ -27,11 +28,8 @@
         <div>
           <a routerLink="/product/{{item.product._id}}">{{item.product.name}}</a>
         </div>
-        <div *ngIf="userType === 'BUYER'">
+        <div>
           Seller <a routerLink="/profile/{{order.receiver._id}}">{{order.receiver.firstName}} {{order.receiver.lastName}}</a>
-        </div>
-        <div *ngIf="userType === 'RETAILER'">
-          Seller <a routerLink="/profile/{{order.requester._id}}">{{order.requester.firstName}} {{order.requester.lastName}}</a>
         </div>
         <div>
           Count = {{item.count}}
