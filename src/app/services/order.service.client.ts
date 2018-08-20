@@ -3,7 +3,6 @@ import {NODE} from './const-url';
 
 @Injectable()
 export class OrderServiceClient {
-  //URL = 'http://localhost:4000/';
 
   createOrder = (order) =>
     fetch(NODE + '/api/order', {

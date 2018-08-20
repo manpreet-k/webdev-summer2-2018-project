@@ -29,9 +29,7 @@ export class RegisterProductsComponent implements OnInit {
   add(product) {
     if (this.user.userType === 'RETAILER') {
       product.listedByRetailer = true;
-      product.listedByProducer = false;
     } else if (this.user.userType === 'PRODUCER') {
-      product.listedByRetailer = false;
       product.listedByProducer = true;
     }
     // this.inventoryService
