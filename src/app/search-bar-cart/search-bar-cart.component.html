@@ -11,9 +11,9 @@
                placeholder="Search"
                aria-label="Search">
         <div *ngIf="searchText !== ''">
-          <div *ngFor = "let name of names |filter:searchText" >
+          <div *ngFor = "let name of names |filter:searchText let i = index" >
             <p>
-              <a routerLink="/product/{{name}}"> {{name}} </a>
+              <a routerLink="/product/{{products[i]._id}}/details"> {{name}} </a>
             </p>
           </div>
         </div>
