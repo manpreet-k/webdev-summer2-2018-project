@@ -8,13 +8,13 @@
          src="{{product.image}}">
     <table class="col-3" title="Sellers">
       <tr *ngFor="let listing of listings" class="list-group-item">
-        <td>
+        <td class="wh-spacing">
           <a routerLink='/profile/{{listing.owner._id}}'>
             {{listing.owner.firstName}} {{listing.owner.lastName}}
           </a>
         </td>
-        <td>${{listing.item.price}}</td>
-        <td>{{listing.item.count}} in stock</td>
+        <td class="wh-spacing">${{listing.item.price}}</td>
+        <td class="wh-spacing">{{listing.item.count}} in stock</td>
       </tr>
     </table>
     <table class="table table-striped  col-5">
