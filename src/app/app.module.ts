@@ -32,6 +32,7 @@ import { ProductViewerComponent } from './product-viewer/product-viewer.componen
 import { InventoryServiceClient } from './services/inventory.service.client';
 import { ProductServiceClient } from './services/product.service.client';
 import {OrderServiceClient} from './services/order.service.client';
+import {FilterPipe} from './filter.pipe';
 
 // Configs
 export function getAuthServiceConfigs() {
@@ -65,7 +66,8 @@ export function getAuthServiceConfigs() {
     SignUpComponent,
     UserPersonalInfoComponent,
     OrderListComponent,
-    ProductViewerComponent
+    ProductViewerComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
