@@ -1,7 +1,5 @@
+<app-header [username]="user ? user.firstName : undefined"></app-header>
 <div class="container-fluid">
-  <a routerLink='/home' class="mx-2">
-    <i class="fas fa-2x fa-times"></i>
-  </a>
   <h1>Listings For:</h1>
   <h3>{{product?.name}}</h3>
 

@@ -11,7 +11,7 @@ import { User } from '../models/user.model.client';
 })
 export class SignUpComponent implements OnInit {
 
-  user: User;
+  user: User = new User();
   showError;
   errorText;
   verifyPassword;
