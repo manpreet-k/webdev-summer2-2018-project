@@ -3,10 +3,10 @@ import {NODE} from './const-url';
 
 @Injectable()
 export class OrderServiceClient {
-  //URL = 'http://localhost:4000/';
+  URL = 'http://localhost:4000/';
 
   createOrder = (order) =>
-    fetch(NODE + '/api/order', {
+    fetch(this.URL + 'api/order', {
       method: 'post',
       credentials: 'include',
       headers: {
@@ -17,7 +17,7 @@ export class OrderServiceClient {
       .then(response => response.json())
 
   findOrderById = (orderId) =>
-    fetch(NODE + '/api/order/' + orderId, {
+    fetch(this.URL + 'api/order/' + orderId, {
       method: 'get',
       credentials: 'include',
       headers: {
@@ -27,7 +27,7 @@ export class OrderServiceClient {
       .then(response => response.json())
 
   findAllOrders = () =>
-    fetch(NODE + '/api/order', {
+    fetch(this.URL + 'api/order', {
       method: 'get',
       credentials: 'include',
       headers: {
@@ -37,7 +37,7 @@ export class OrderServiceClient {
       .then(response => response.json())
 
   findOrderByUser = (userId) =>
-    fetch(NODE + '/api/order/from/' + userId, {
+    fetch(this.URL + 'api/order/from/' + userId, {
       method: 'get',
       credentials: 'include',
       headers: {
@@ -47,7 +47,7 @@ export class OrderServiceClient {
       .then(response => response.json())
 
   findOrderToUser = (userId) =>
-    fetch(NODE + '/api/order/To/' + userId, {
+    fetch(this.URL + 'api/order/To/' + userId, {
       method: 'get',
       credentials: 'include',
       headers: {
@@ -57,7 +57,7 @@ export class OrderServiceClient {
       .then(response => response.json())
 
   updateOrder = (orderId, newOrderStatus) => {
-    return fetch(NODE + '/api/order/' + orderId, {
+    return fetch(this.URL + 'api/order/' + orderId, {
       method: 'put',
       body: JSON.stringify(newOrderStatus),
       credentials: 'include',
@@ -69,7 +69,7 @@ export class OrderServiceClient {
   }
 
   deleteOrder(orderId) {
-    return fetch(NODE + '/api/order/' + orderId, {
+    return fetch(this.URL + 'api/order/' + orderId, {
       method: 'delete',
       credentials: 'include'
     });
@@ -130,5 +130,35 @@ export class OrderServiceClient {
     })
       .then(response => response.json());
   }
+
+  findRelatedBuyers = (userId) =>
+    fetch(NODE + '/api/order/to/' + userId, {
+      method: 'get',
+      credentials: 'include',
+      headers: {
+        'content-type': 'application/json'
+      },
+    })
+      .then(response => response.json())
+
+  findRelatedCustomers = (userId) =>
+    fetch(NODE + '/api/order/from/' + userId, {
+      method: 'get',
+      credentials: 'include',
+      headers: {
+        'content-type': 'application/json'
+      },
+    })
+      .then(response => response.json())
+
+  findRelatedOrders = (receiverId, requesterId) =>
+    fetch(NODE + '/api/order/to/' + receiverId + '/from/' + requesterId, {
+      method: 'get',
+      credentials: 'include',
+      headers: {
+        'content-type': 'application/json'
+      },
+    })
+      .then(response => response.json())
 
 }

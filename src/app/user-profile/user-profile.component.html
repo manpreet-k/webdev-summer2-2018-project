@@ -1,16 +1,26 @@
 <app-header *ngIf="!visitor"
-            [username]="user?.firstName"></app-header>
+            [username]="user? user.firstName : ''"></app-header>
 <app-header *ngIf="visitor"></app-header>
 <div class="container-fluid">
   <div class="row wh-size">
-    <div class="col-10">
+    <button *ngIf="user? user.userType === 'RETAILER' : ''"
+            class="btn btn-info col-2"
+            routerLink="/related/{{userId}}">
+      Related Customers
+    </button>
+    <button *ngIf="user? user.userType === 'BUYER': '' "
+            class="btn btn-info col-2"
+            routerLink="/related/{{userId}}">
+      Related Retailers
+    </button>
+    <div class="col-8">
     </div>
-    <button *ngIf="user?.userType === 'RETAILER' && !visitor"
+    <button *ngIf="user ? user.userType === 'RETAILER' : '' && !visitor"
             class="btn btn-info col-2"
             routerLink="/manage-products">
       Manage Inventory
     </button>
-    <button *ngIf="user?.userType === 'PRODUCER' && !visitor"
+    <button *ngIf="user? user.userType === 'PRODUCER':'' && !visitor"
             class="btn btn-info col-2"
             routerLink="/manage-products">
       Manage Inventory

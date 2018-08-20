@@ -1,0 +1,22 @@
+<app-header [username]="loggedInUser ? loggedInUser.firstName : undefined"></app-header>
+<div class="container-fluid">
+  <div class="row">
+    <a class="col-2 fa fa-arrow-left" routerLink="/profile/{{loggedInUser._id}}"></a>
+    <h5 class="col-10 text-center">Related users</h5>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <ul title="Sellers">
+        <li *ngFor="let reluser of relatedUsers" class="list-group-item">
+            <button role="link" class="btn btn-link" (click)="setSelectedUserId(reluser)">
+              {{reluser.firstName}} {{reluser.lastName}}
+            </button>
+        </li>
+      </ul>
+
+    </div>
+    <div class="col-8">
+      <app-related-user-details></app-related-user-details>
+    </div>
+  </div>
+</div>

@@ -13,6 +13,8 @@ import {AdminSectionOrdersComponent} from './admin-section-orders/admin-section-
 import {SignUpComponent} from './sign-up/sign-up.component';
 import {OrderListComponent} from './order-list/order-list.component';
 import { ProductViewerComponent } from './product-viewer/product-viewer.component';
+import {RelatedUsersComponent} from './related-users/related-users.component';
+import {UserPersonalInfoComponent} from './user-personal-info/user-personal-info.component';
 
 const routes: Routes = [
   {
@@ -24,6 +26,7 @@ const routes: Routes = [
       { path: 'home', component: HomeComponent},
       { path: 'user/:userId/:order', component: UserProfileComponent},
       { path: 'cart/:userId', component: CartViewComponent },
+      { path: 'related/:userId', component: RelatedUsersComponent },
       { path: 'profile/:userId', component: UserProfileComponent},
       { path: 'product/:productId/details', component: ProductDetailsComponent},
       { path: 'add-products', component: RegisterProductsComponent},
@@ -33,6 +36,7 @@ const routes: Routes = [
       { path: 'admin/:username/orders', component : AdminSectionOrdersComponent},
       { path: 'edit/:productId', component: EditProductComponent},
       { path: 'product/:productId', component: ProductViewerComponent },
+      { path: 'profile/related/:userId', component: RelatedUsersComponent },
       { path: '**', component: HomeComponent} // last
     ]
   }

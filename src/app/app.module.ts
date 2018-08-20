@@ -33,6 +33,8 @@ import { InventoryServiceClient } from './services/inventory.service.client';
 import { ProductServiceClient } from './services/product.service.client';
 import {OrderServiceClient} from './services/order.service.client';
 import {FilterPipe} from './filter.pipe';
+import { RelatedUsersComponent } from './related-users/related-users.component';
+import { RelatedUserDetailsComponent } from './related-user-details/related-user-details.component';
 
 // Configs
 export function getAuthServiceConfigs() {
@@ -67,7 +69,9 @@ export function getAuthServiceConfigs() {
     UserPersonalInfoComponent,
     OrderListComponent,
     ProductViewerComponent,
-    FilterPipe
+    FilterPipe,
+    RelatedUsersComponent,
+    RelatedUserDetailsComponent
   ],
   imports: [
     BrowserModule,
