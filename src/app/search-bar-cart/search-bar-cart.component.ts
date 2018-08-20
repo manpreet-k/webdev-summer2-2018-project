@@ -22,7 +22,7 @@ export class SearchBarCartComponent implements OnInit {
 
   ngOnInit() {
 
-    this.productService.findAllActiveProducts()
+    this.productService.findListedByRetailer()
       .then(products => this.products = products)
       .then(() => this.products.map(product => this.names.push(product['name'])));
 
