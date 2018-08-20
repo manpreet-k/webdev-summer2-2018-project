@@ -38,11 +38,9 @@ export class AdminSectionOrdersComponent implements OnInit {
     this.username = username;
     this.orderService.findAllOrders()
       .then(orders => this.orders = orders);
-    console.log('');
   }
 
   createOrder() {
-
   }
 
 
@@ -51,7 +49,6 @@ export class AdminSectionOrdersComponent implements OnInit {
     this.newOrder.receiver['firstName'] = this.Receiver;
     // this.newOrder.items[0].pricePerUnit = this.Price;
     this.newOrder.status = this.OrderStatus;
-    console.log(this.newOrder);
     this.orderService.updateOrder(this.newOrder._id, this.newOrder)
       .then(response => console.log(response));
 
@@ -73,6 +70,6 @@ export class AdminSectionOrdersComponent implements OnInit {
     this.newOrder = order;
   }
   deleteOrder(orderId) {
-    this.orderService.deleteOrder(orderId).then(loadOrders(username));
+    this.orderService.deleteOrder(orderId);
   }
 }
