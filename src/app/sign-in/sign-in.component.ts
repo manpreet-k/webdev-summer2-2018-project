@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 
 import {AuthService, FacebookLoginProvider, GoogleLoginProvider} from 'angular-6-social-login';
 import {UserServiceClient} from '../services/user.service.client';
+import {User} from '../models/user.model.client';
 
 @Component({
   selector: 'app-sign-in',
@@ -11,6 +12,7 @@ import {UserServiceClient} from '../services/user.service.client';
 })
 export class SignInComponent implements OnInit {
 
+  user: User;
   showError = false;
   errorText = '';
   email;
