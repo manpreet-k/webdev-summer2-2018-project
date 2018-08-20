@@ -73,6 +73,6 @@ export class AdminSectionOrdersComponent implements OnInit {
     this.newOrder = order;
   }
   deleteOrder(orderId) {
-    this.orderService.deleteOrder(orderId).then();
+    this.orderService.deleteOrder(orderId).then(loadOrders(username));
   }
 }
