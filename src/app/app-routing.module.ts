@@ -29,8 +29,8 @@ const routes: Routes = [
       { path: 'add-products', component: RegisterProductsComponent},
       { path: 'manage-products', component: ManageProductsComponent},
       { path: 'admin', component: AdminPageComponent},
-      { path: 'admin/profile/:userid', component : AdminPageComponent},
-      { path: 'admin/:username/orders', component : AdminSectionOrdersComponent},
+      { path: 'admin/profile/:userId', component : AdminPageComponent},
+      { path: 'admin/orders', component : AdminSectionOrdersComponent},
       { path: 'edit/:productId', component: EditProductComponent},
       { path: 'product/:productId', component: ProductViewerComponent },
       { path: '**', component: HomeComponent} // last
