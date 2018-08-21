@@ -30,16 +30,16 @@ export class AdminSectionProfileComponent implements OnInit {
   constructor(private router: Router,
     private route: ActivatedRoute,
     private userService: UserServiceClient) {
-    this.route.params.subscribe(params => this.loadProfile(params['username']));
+    this.route.params.subscribe(params => this.loadProfile(params['userid']));
   }
 
   ngOnInit() {
   }
-  loadProfile(username) {
-    if (username !== undefined) {
-      this.username = username;
+  loadProfile(userid) {
+    if (userid !== undefined) {
+      //this.username = username;
       this.userService
-        .findUserByUsername(username)
+        .findUserById(userid)
         .then(user => {
           if (user !== null) {
             this.user = user;
