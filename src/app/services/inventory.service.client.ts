@@ -4,10 +4,10 @@ import { NODE } from './const-url';
 
 @Injectable()
 export class InventoryServiceClient {
-    findAllInventoriesForProduct(ocpc) {
-        return fetch(NODE + '/api/inventory/product/' + ocpc)
-            .then(response => response.json());
-    }
+  findAllInventoriesForProduct(ocpc) {
+    return fetch(NODE + '/api/inventory/product/' + ocpc)
+      .then(response => response.json());
+  }
 
   findAllListedProducts = (user) =>
     fetch(NODE + '/api/inventory/' + user._id, {
@@ -29,8 +29,8 @@ export class InventoryServiceClient {
     })
       .then(response => response.json())
 
-  addProductToInventory = (inventoryId, product) =>
-    fetch(NODE + '/api/inventory/' + inventoryId + '/product/' + product._id,  {
+  addProductToInventory = (inventoryId, prodId, product) =>
+    fetch(NODE + '/api/inventory/' + inventoryId + '/product/' + prodId,  {
       method: 'put',
       credentials: 'include',
       headers: {
