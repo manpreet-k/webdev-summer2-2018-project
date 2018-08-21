@@ -21,8 +21,15 @@
                  placeholder="Buyer Name" /></td>
       <td><input [(ngModel)]="Price"  class="form-control"
                  placeholder="Order Value" disabled/></td>
-      <td> <input [(ngModel)]="OrderStatus"  class="form-control"
-                 placeholder="Order status" /> </td>
+      <td>
+        <!--<input [(ngModel)]="OrderStatus"  class="form-control"-->
+                 <!--placeholder="Order status" />-->
+        <select [(ngModel)]="OrderStatus" class="form-control">
+        <option  value="OPEN">OPEN</option>
+        <option  value="FULFILLED">FULFILLED</option>
+        <option  value="CANCELLED">CANCELLED</option>
+        </select>
+      </td>
       <td><span class="float-right" style="white-space: nowrap">
 							 <i class="fa-2x fa fa-plus "  (click)="createOrder()"></i>
               <i class="fa-2x fa fa-check wbdv-update" (click)="updateOrder()"></i>

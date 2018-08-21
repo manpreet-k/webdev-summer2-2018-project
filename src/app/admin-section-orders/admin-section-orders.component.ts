@@ -49,6 +49,10 @@ export class AdminSectionOrdersComponent implements OnInit {
     this.newOrder.receiver['firstName'] = this.Receiver;
     // this.newOrder.items[0].pricePerUnit = this.Price;
     this.newOrder.status = this.OrderStatus;
+    this.Requester = '';
+    this.OrderStatus = '';
+    this.Receiver ='';
+    this.Price= '';
     this.orderService.updateOrder(this.newOrder._id, this.newOrder)
       .then(response => console.log(response));
 
