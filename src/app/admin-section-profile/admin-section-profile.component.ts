@@ -12,34 +12,22 @@ export class AdminSectionProfileComponent implements OnInit {
 
   username = '';
 
-  user: User;
-
-  // users = {email: '' ,
-  // password: '',
-  // firstName: '',
-  // lastName: '',
-  // phone: '',
-  // street:'',
-  // city: '',
-  // state: '',
-  // zip: '',
-  // profileImage: '',
-  // userType: ''};
+  user: User = new User() ;
 
   profileNotSelect = false;
+
   constructor(private router: Router,
     private route: ActivatedRoute,
     private userService: UserServiceClient) {
-    this.route.params.subscribe(params => this.loadProfile(params['userid']));
+    this.route.params.subscribe(params => this.loadProfile(params['userId']));
   }
 
   ngOnInit() {
   }
-  loadProfile(userid) {
-    if (userid !== undefined) {
-      //this.username = username;
+  loadProfile(userId) {
+    if (userId !== undefined) {
       this.userService
-        .findUserById(userid)
+        .findUserById(userId)
         .then(user => {
           if (user !== null) {
             this.user = user;
@@ -50,25 +38,29 @@ export class AdminSectionProfileComponent implements OnInit {
         });
     } else {
       this.profileNotSelect = true;
-      console.log(username);
     }
 
   }
 
   create() {
-    alert(this.user);
-    this.userService.register(this.user)
-      .then(res => this.router.navigate(['/admin']));
+    if (this.user.firstName !== '' ) {
+      this.userService.register(this.user)
+        .then(() => {
+                      alert('New User added');
+                      this.user = new User();
+                      this.router.navigate(['/admin'])
+        });
+    }else {
+      alert('please enter the details and try again');
+    }
+
   }
 
   update() {
-    // this.user.username = this.username;
-    // this.user.firstName = this.firstName;
-    // this.user.lastName = this.lastName;
-    // this.user.email = this.email;
     this.userService.update(this.user)
       .then(user => this.user = user)
       .then((() => alert('Details updated successfully!')));
+      this.router.navigate(['/admin'])
   }
 
   delete() {

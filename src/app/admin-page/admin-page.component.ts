@@ -10,10 +10,12 @@ export class AdminPageComponent implements OnInit {
 
 
   user = '';
-  username = 'Visitor';
+  username = 'Admin';
   users = '';
 
-  constructor(private userService: UserServiceClient) { }
+  constructor(private userService: UserServiceClient) {
+    this.loadUsers();
+  }
 
   ngOnInit() {
    // this.loadUser();
