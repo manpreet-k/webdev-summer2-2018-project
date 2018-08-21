@@ -16,7 +16,7 @@ export class AdminPageComponent implements OnInit {
   constructor(private userService: UserServiceClient) { }
 
   ngOnInit() {
-    this.loadUser();
+   // this.loadUser();
     this.loadUsers();
   }
 
