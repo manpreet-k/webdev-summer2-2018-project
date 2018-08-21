@@ -10,7 +10,7 @@
         <li *ngIf="user.userType == 'BUYER'"
            class="list-group-item wbdv"> <!-- CSS Class-->
 
-          <a  routerLink="/admin/profile/{{user._id}}">
+          <a  routerLink="/admin/profile/{{user?._id}}">
             {{user.firstName}}</a>
          </li>
       </div>
@@ -21,7 +21,7 @@
         <li *ngIf="user.userType !== 'BUYER'"
             class="list-group-item wbdv"> <!-- CSS Class-->
 
-          <a  routerLink="/admin/profile/{{user._id}}">
+          <a  routerLink="/admin/profile/{{user?._id}}">
             {{user.firstName}}</a>
         </li>
       </div>
