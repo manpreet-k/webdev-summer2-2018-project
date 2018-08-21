@@ -27,20 +27,11 @@ export class RegisterProductsComponent implements OnInit {
   }
 
   add(product) {
-    if (this.user.userType === 'RETAILER') {
-      product.listedByRetailer = true;
-    } else if (this.user.userType === 'PRODUCER') {
-      product.listedByProducer = true;
-    }
-    // this.inventoryService
-    //   .findInventoryByOwner(this.user)
-    //   .then(inventory => {
     if (this.inventory) {
       this.changeInventory(product, true);
     } else {
       this.changeInventory(product, false);
     }
-    // });
   }
 
   changeInventory(product, inventExists) {
@@ -61,21 +52,22 @@ export class RegisterProductsComponent implements OnInit {
   }
 
   addProdToInventory(product) {
-    const invProd = {
-      product: product,
-      price: this.price[product.ocpc],
-      count: this.quantity[product.ocpc]
-    };
-
-    this.inventoryService
-      .addProductToInventory(this.inventory._id, invProd)
-      .then(res => {
-        this.inventory.items.push(invProd);
-        this.filterExistingProducts();
+    this.setListedOwnerField(product);
+    this.productService
+      .updateProduct(product)
+      .then(prod => {
+        const invProd = this.setInventoryObject(product);
+        this.inventoryService
+          .addProductToInventory(this.inventory._id, product  ._id, invProd)
+          .then(res => {
+            this.inventory.items.push(invProd);
+            this.filterExistingProducts();
+          });
       });
   }
 
   createProduct(product, inventExists) {
+    this.setListedOwnerField(product);
 
     this.productService
       .createProduct(product)
@@ -92,13 +84,25 @@ export class RegisterProductsComponent implements OnInit {
       });
   }
 
-  createInventory(product) {
-    const invProd = {
+  setListedOwnerField(product) {
+    if (this.user.userType === 'RETAILER') {
+      product.listedByRetailer = true;
+    } else if (this.user.userType === 'PRODUCER') {
+      product.listedByProducer = true;
+    }
+  }
+
+  setInventoryObject(product) {
+    return {
       product: product,
       price: this.price[product.ocpc],
       count: this.quantity[product.ocpc]
     };
+  }
 
+  createInventory(product) {
+    this.setListedOwnerField(product);
+    const invProd = this.setInventoryObject(product);
     const inv = {
       owner: this.user._id,
       items: [invProd]
